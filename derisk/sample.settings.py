@@ -113,6 +113,8 @@ AUTHENTICATION_BACKENDS = (
 )
 SITE_ID = 1
 LOGIN_REDIRECT_URL = '/overview'
+ACCOUNT_AUTHENTICATION_METHOD ="email"
+ACCOUNT_EMAIL_REQUIRED=True
 # Internationalization
 # https://docs.djangoproject.com/en/1.9/topics/i18n/
 
