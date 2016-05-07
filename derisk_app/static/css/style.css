@@ -1725,7 +1725,9 @@ a.google-plus-link:hover {
 .error-msg {
     font-size: 2em;
 }
-
+.error{
+color:red;
+}
 /* -- Dashboard Checklist Styles */
 
 .checklist-tile {

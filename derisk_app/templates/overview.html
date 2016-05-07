@@ -1,3 +1,5 @@
+{% load i18n %}
+{% load account socialaccount %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -1441,9 +1443,14 @@
             <p>Select "Logout" below if you are ready<br> to end your current session.</p>
             <ul class="list-inline">
                 <li>
-                    <a href="login.html" class="btn btn-green">
-                        <strong>Logout</strong>
-                    </a>
+				<form method="post" action="{% url 'account_logout' %}">
+				  {% csrf_token %}
+				  {% if redirect_field_value %}
+				  <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>
+				  {% endif %}
+				  <button class="btn btn-green" type="submit"><strong>{% trans 'Logout' %}</strong></button>
+				</form>
+
                 </li>
                 <li>
                     <button class="logout_close btn btn-green">Cancel</button>
