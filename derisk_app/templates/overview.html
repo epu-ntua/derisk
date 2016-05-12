@@ -2,17 +2,16 @@
 {% block title %}Energy Efficiency De-risking Platform - Overview{% endblock %}
 {% block bodyclass %}overview{% endblock %}
 {% block overviewmenu %}active{% endblock %}
-{% block content%}
+{% block content %}
                 <!-- begin PAGE TITLE AREA -->
                 <!-- Use this section for each page's title and breadcrumb layout. In this example a date range picker is included within the breadcrumb. -->
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="page-title">
-                            <h1>Manage Projects
-                                <small>Manage your project investments</small>
+                            <h1>Overview<small>An overview of energy investments in the platform</small>
                             </h1>
                             <ol class="breadcrumb">
-                                <li class="active"><i class="fa fa-building-o"></i> Manage Projects</li>
+                                <li class="active"><i class="fa fa-building-o"></i> Overview</li>
                                 <li class="pull-right">
                                     <div id="reportrange" class="btn btn-green btn-square date-picker">
                                         <i class="fa fa-calendar"></i>
@@ -21,10 +20,114 @@
                                 </li>
                             </ol>
                         </div>
+						<div class="page-title">
+							<div class="breadcrumb">
+								<p>Welocome to ENERGY EFFICIENCY DE-RISKING PLATFORM - EEDP</p>
+							    <p>EEDP is an open source database for energy efficiency investments performance monitoring and benchmarking as well as for the support of the underwriting process.</p>
+								<p>If you are using EEDP for the fist time please click <a href="#">here</a> to get started</p>
+								<p>For further documentation and faq please <a href="#">see here</a> </p>
+							</div>
+						</div>
                     </div>
                     <!-- /.col-lg-12 -->
                 </div>
                 <!-- /.row -->
                 <!-- end PAGE TITLE AREA -->
+
+               <div class="row">
+			      <div class="col-lg-6 col-sm-6">
+				 <div>
+				 <select class="myselect form-control">
+                      <option>Your organization</option>
+                      <option>Your domain</option>
+                       <option>All organizations</option>
+                </select>
+				</div>
+				  <div class="row">
+                    <div class="col-lg-4 col-sm-6">
+                        <div class="circle-tile">
+                            <a href="#">
+                                <div class="circle-tile-heading dark-blue">
+                                    <i class="fa fa-gear fa-fw fa-3x"></i>
+                                </div>
+                            </a>
+                            <div class="circle-tile-content dark-blue">
+                                <div class="circle-tile-description text-faded">
+                                    Interventions
+                                </div>
+                                <div class="circle-tile-number text-faded">
+                                    10
+                                    <span id="sparklineA"></span>
+                                </div>
+                                <a href="#" class="circle-tile-footer">More Info <i class="fa fa-chevron-circle-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-sm-6">
+                        <div class="circle-tile">
+                            <a href="#">
+                                <div class="circle-tile-heading green">
+                                    <i class="fa fa-money fa-fw fa-3x"></i>
+                                </div>
+                            </a>
+                            <div class="circle-tile-content green">
+                                <div class="circle-tile-description text-faded">
+                                    Average Payback Time
+                                </div>
+                                <div class="circle-tile-number text-faded">
+                                   10 Years
+                                </div>
+                                <a href="#" class="circle-tile-footer">More Info <i class="fa fa-chevron-circle-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+					
+                    <div class="col-lg-4 col-sm-6">
+                        <div class="circle-tile">
+                            <a href="#">
+                                <div class="circle-tile-heading orange">
+                                    <i class="fa fa-fire fa-fw fa-3x"></i>
+                                </div>
+                            </a>
+                            <div class="circle-tile-content orange">
+                                <div class="circle-tile-description text-faded">
+                                    Actual Energy Savings
+                                </div>
+                                <div class="circle-tile-number text-faded">
+                                    34%
+                                </div>
+                                <a href="#" class="circle-tile-footer">More Info <i class="fa fa-chevron-circle-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+				<!-- Graph -->
+                    </div>
+					 <div class="row">
+                            <div class="col-lg-12 col-sm-12">
+                                <div class="tile green" style="height: 320px">
+                                    <h4><i class="fa fa-usd"></i> Building Energy Saving potential by average payback time and use <a href="javascript:;"><i class="fa fa-refresh pull-right"></i></a>
+                                    </h4>
+                                    <p class="small text-faded">
+                                        January 2014- April 2016
+                                    </p>
+                                    <div id="morris-chart-dashboard"></div>
+                                </div>
+                            </div>
+						</div>
+					
+
+					</div>
+                    <div class="col-lg-4 col-sm-4">
+                     <div class="inside-header">
+						Recent Projects
+					 </div>
+					 <div class="whitecontainer">
+					 <p class="whiteactive">Project 1 - Chesterfield Royal Hospital </p>
+					 <p>Project 2 - Nottingham City Hospital </p>
+					 <p>Project 6 – Athens Hospitals </p>
+					 </div>
+                    </div>
+                 </div>
+                 <!-- end of row -->
 
 {% endblock %}
