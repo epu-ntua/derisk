@@ -35,13 +35,12 @@
                     <div class="col-lg-8 col-sm-8">
 					 <div class="portlet portlet-default">
 					 <div class="portlet-body">
-					 <div style="text-align:left"><h3 style="color:#34495e;margin-bottom:25px;">Your Projects</h3>
+					 <div style="text-align:left"><h3 style="color:#34495e;margin-bottom:25px;">Edit Project </h3>
 					 </div>
-					 {% for project in projects %}
-					 <p> <a class="projectlinks" href="{% url 'project-edit' project.id %}"><b>Project ID -  {{project.id}}</b><span style="font-style:italic;"> updated {{project.date_updated|naturaltime}}</span> <span style=""> <b>{{project.get_sharing_level_display}} {% if project.sharing_level == "PRI" %}<i class="fa fa-lock"></i> {% else %}<i class="fa fa-unlock"></i> {% endif %}</b> </span></a></p>
-					 {% endfor %}
-
-					 <a role="button" href="project-detail.html" style="margin-top:40px" class="btn btn-default"><i class="fa fa-plus"> Add New Project</i></a>
+					<form action="" method="post">{% csrf_token %}
+						{{ form.as_p }}
+						<input type="submit" value="Update" />
+					</form>
 					 </div>
 					 </div>
                     </div>
