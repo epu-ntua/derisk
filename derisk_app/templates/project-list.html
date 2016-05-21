@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load humanize %}
 {% block title %}Energy Efficiency De-risking Platform - Overview{% endblock %}
 {% block bodyclass %}Manage Projects{% endblock %}
 {% block manageprojectsmenu %}active{% endblock %}
@@ -37,7 +38,7 @@
 					 <div style="text-align:left"><h3 style="color:#34495e;margin-bottom:25px;">Your Projects</h3>
 					 </div>
 					 {% for project in projects %}
-					 <p> <a class="projectlinks" href="projectid.html"><b>Project ID -  {{project.id}}</b><span style="font-style:italic;"> updated {{project.date_updated}}</span> <span style=""> <b>{{project.get_sharing_level_display}} {% if project.sharing_level == "PRI" %}<i class="fa fa-lock"></i> {% else %}<i class="fa fa-unlock"></i> {% endif %}</b> </span></a></p>
+					 <p> <a class="projectlinks" href="projectid.html"><b>Project ID -  {{project.id}}</b><span style="font-style:italic;"> updated {{project.date_updated|naturaltime}}</span> <span style=""> <b>{{project.get_sharing_level_display}} {% if project.sharing_level == "PRI" %}<i class="fa fa-lock"></i> {% else %}<i class="fa fa-unlock"></i> {% endif %}</b> </span></a></p>
 					 {% endfor %}
 
 					 <a role="button" href="project-detail.html" style="margin-top:40px" class="btn btn-default"><i class="fa fa-plus"> Add New Project</i></a>
@@ -46,5 +47,4 @@
                     </div>
                  </div>
                  <!-- end of row -->
-
 {% endblock %}

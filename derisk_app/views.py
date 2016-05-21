@@ -11,7 +11,7 @@ def index(request):
 @login_required()
 def overview(request):
     params = {}
-    params['username'] = request.user.username
+    params['test'] = request.user
     return render(request, 'overview.html',params)
 
 class ProjectListView(LoginRequiredMixin,ListView):
