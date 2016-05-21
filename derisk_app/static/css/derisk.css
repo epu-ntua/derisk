@@ -3,7 +3,14 @@
 /* The following styles are used for demo purposes. */
 
 /* Organizing the Icons Page */
-
+a.projectlinks:hover{
+    background-color: #ecf0f1;
+	text-decoration:none;
+	padding:5px;
+}
+a.projectlinks{
+	padding:5px;
+}
 .fa-hover {
     height: 45px;
 }

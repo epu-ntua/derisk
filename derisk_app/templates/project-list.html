@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% block title %}Energy Efficiency De-risking Platform - Overview{% endblock %}
+{% block bodyclass %}Manage Projects{% endblock %}
+{% block manageprojectsmenu %}active{% endblock %}
+{% block content %}
+                <!-- begin PAGE TITLE AREA -->
+                <!-- Use this section for each page's title and breadcrumb layout. In this example a date range picker is included within the breadcrumb. -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="page-title">
+                            <h1>Manage Projects<small> List of your energy investment projects</small>
+                            </h1>
+                            <ol class="breadcrumb">
+                                <li class="active"><i class="fa fa-building-o"></i> Manage Projects</li>
+                                <li class="pull-right">
+                                    <div id="reportrange" class="btn btn-green btn-square date-picker">
+                                        <i class="fa fa-calendar"></i>
+                                        <span class="date-range"></span> <i class="fa fa-caret-down"></i>
+                                    </div>
+                                </li>
+                            </ol>
+                        </div>
+                    </div>
+                    <!-- /.col-lg-12 -->
+                </div>
+                <!-- /.row -->
+                <!-- end PAGE TITLE AREA -->
+
+               <div class="row">
+			      <div class="col-lg-8 col-sm-8">
+				 <div>
+				</div>
+				  <div class="row">
+                    <div class="col-lg-8 col-sm-8">
+					 <div class="portlet portlet-default">
+					 <div class="portlet-body">
+					 <div style="text-align:left"><h3 style="color:#34495e;margin-bottom:25px;">Your Projects</h3>
+					 </div>
+					 {% for project in projects %}
+					 <p> <a class="projectlinks" href="projectid.html"><b>Project ID -  {{project.id}}</b><span style="font-style:italic;"> updated {{project.date_updated}}</span> <span style=""> <b>{{project.get_sharing_level_display}} {% if project.sharing_level == "PRI" %}<i class="fa fa-lock"></i> {% else %}<i class="fa fa-unlock"></i> {% endif %}</b> </span></a></p>
+					 {% endfor %}
+
+					 <a role="button" href="project-detail.html" style="margin-top:40px" class="btn btn-default"><i class="fa fa-plus"> Add New Project</i></a>
+					 </div>
+					 </div>
+                    </div>
+                 </div>
+                 <!-- end of row -->
+
+{% endblock %}

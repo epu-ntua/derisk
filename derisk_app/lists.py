@@ -69,3 +69,8 @@ VERIFIED = (
   ('by other','by other'),
   ('not verified','not verified'),
 )
+
+SHARINGLEVEL = (
+  ('PRI','Private'),
+  ('ANA','Share for analysis'),
+)
