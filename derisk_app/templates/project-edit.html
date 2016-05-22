@@ -3,22 +3,41 @@
 {% block title %}Energy Efficiency De-risking Platform - Overview{% endblock %}
 {% block bodyclass %}Manage Projects{% endblock %}
 {% block manageprojectsmenu %}active{% endblock %}
+{% block scripts %}
+    <!-- Delete project Notification Box -->
+    <div id="deleteproject">
+        <div class="logout-message">
+            <h3 style="padding-top:50px">
+                <i class="fa fa-remove text-green"></i> Are you sure you want to delete the project?
+            </h3>
+            <p>All information about the project<br> will be deleted. You cannot undo this action</p>
+            <ul class="list-inline">
+                <li>
+				<form method="post" action="{% url 'project-delete' project.id %}">
+				  {% csrf_token %}
+				  <button class="btn btn-red" type="submit"><strong>Delete</strong></button>
+				</form>
+
+                </li>
+                <li>
+                    <button class="deleteproject_close btn btn-green">Cancel</button>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!-- /#deleteproject -->
+    <script src="/static/js/plugins/popupoverlay/deleteproject.js"></script>
+{% endblock %}
 {% block content %}
                 <!-- begin PAGE TITLE AREA -->
                 <!-- Use this section for each page's title and breadcrumb layout. In this example a date range picker is included within the breadcrumb. -->
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="page-title">
-                            <h1>Manage Projects<small> List of your energy investment projects</small>
+                            <h1>Edit Project<small> Edit the information of your project</small>
                             </h1>
                             <ol class="breadcrumb">
-                                <li class="active"><i class="fa fa-building-o"></i> Manage Projects</li>
-                                <li class="pull-right">
-                                    <div id="reportrange" class="btn btn-green btn-square date-picker">
-                                        <i class="fa fa-calendar"></i>
-                                        <span class="date-range"></span> <i class="fa fa-caret-down"></i>
-                                    </div>
-                                </li>
+                                <li class="active"><i class="fa fa-building-o"></i> Edit Project</li>
                             </ol>
                         </div>
                     </div>
@@ -33,6 +52,9 @@
 				</div>
 				  <div class="row">
                     <div class="col-lg-8 col-sm-8">
+					<div>
+					<a class="btn btn-red btn-lg deleteproject_open" href="#deleteproject">Delete Project</a>
+					</div>
 					 <div class="portlet portlet-default">
 					 <div class="portlet-body">
 					 <div style="text-align:left"><h3 style="color:#34495e;margin-bottom:25px;">Edit Project </h3>

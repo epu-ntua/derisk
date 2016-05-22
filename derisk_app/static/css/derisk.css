@@ -3,6 +3,10 @@
 /* The following styles are used for demo purposes. */
 
 /* Organizing the Icons Page */
+
+#deleteproject{
+ margin-top:200px;
+}
 a.projectlinks:hover{
     background-color: #ecf0f1;
 	text-decoration:none;

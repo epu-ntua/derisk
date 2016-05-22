@@ -13,12 +13,6 @@
                             </h1>
                             <ol class="breadcrumb">
                                 <li class="active"><i class="fa fa-building-o"></i> Manage Projects</li>
-                                <li class="pull-right">
-                                    <div id="reportrange" class="btn btn-green btn-square date-picker">
-                                        <i class="fa fa-calendar"></i>
-                                        <span class="date-range"></span> <i class="fa fa-caret-down"></i>
-                                    </div>
-                                </li>
                             </ol>
                         </div>
                     </div>
@@ -40,8 +34,10 @@
 					 {% for project in projects %}
 					 <p> <a class="projectlinks" href="{% url 'project-edit' project.id %}"><b>Project ID -  {{project.id}}</b><span style="font-style:italic;"> updated {{project.date_updated|naturaltime}}</span> <span style=""> <b>{{project.get_sharing_level_display}} {% if project.sharing_level == "PRI" %}<i class="fa fa-lock"></i> {% else %}<i class="fa fa-unlock"></i> {% endif %}</b> </span></a></p>
 					 {% endfor %}
-
-					 <a role="button" href="project-detail.html" style="margin-top:40px" class="btn btn-default"><i class="fa fa-plus"> Add New Project</i></a>
+				<form method="post" action="{% url 'project-create'%}">
+				  {% csrf_token %}
+				  <button class="btn btn-default" style="margin-top:40px" type="submit"><strong><i class="fa fa-plus"> Add New Project</i></strong></button>
+				</form>
 					 </div>
 					 </div>
                     </div>
