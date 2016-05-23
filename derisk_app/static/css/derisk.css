@@ -7,6 +7,27 @@
 #deleteproject{
  margin-top:200px;
 }
+
+#myAdvancedPills.nav-pills>li.active>a, #myAdvancedPills.nav-pills>li.active>a:hover, #myAdvancedPills.nav-pills>li.active>a:focus {
+ color:#f39c12;
+}
+#myAdvancedPills.nav-pills>li>a {
+  background-color:white;
+  color:#34495e;
+}
+.editproject-tabs {
+ background-color:white;
+ border-top: 1px solid #ccc;
+ border-bottom: 1px solid #ccc;
+ border-left: 1px solid #ccc;
+ padding-top:20px;
+}
+.editproject-fields {
+ background-color:white;
+  border-bottom: 1px solid #ccc;
+  border-right: 1px solid #ccc;
+  border-top: 1px solid #ccc;
+}
 a.projectlinks:hover{
     background-color: #ecf0f1;
 	text-decoration:none;

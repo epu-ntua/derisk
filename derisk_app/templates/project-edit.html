@@ -4,68 +4,142 @@
 {% block bodyclass %}Manage Projects{% endblock %}
 {% block manageprojectsmenu %}active{% endblock %}
 {% block scripts %}
-    <!-- Delete project Notification Box -->
-    <div id="deleteproject">
-        <div class="logout-message">
-            <h3 style="padding-top:50px">
-                <i class="fa fa-remove text-green"></i> Are you sure you want to delete the project?
-            </h3>
-            <p>All information about the project<br> will be deleted. You cannot undo this action</p>
-            <ul class="list-inline">
-                <li>
-				<form method="post" action="{% url 'project-delete' project.id %}">
-				  {% csrf_token %}
-				  <button class="btn btn-red" type="submit"><strong>Delete</strong></button>
-				</form>
-
-                </li>
-                <li>
-                    <button class="deleteproject_close btn btn-green">Cancel</button>
-                </li>
-            </ul>
-        </div>
-    </div>
-    <!-- /#deleteproject -->
-    <script src="/static/js/plugins/popupoverlay/deleteproject.js"></script>
+<!-- Delete project Notification Box -->
+<div id="deleteproject">
+   <div class="logout-message">
+      <h3 style="padding-top:50px">
+         <i class="fa fa-remove text-green"></i> Are you sure you want to delete the project?
+      </h3>
+      <p>All information about the project<br> will be deleted. You cannot undo this action</p>
+      <ul class="list-inline">
+         <li>
+            <form method="post" action="{% url 'project-delete' project.id %}">
+               {% csrf_token %}
+               <button class="btn btn-red" type="submit"><strong>Delete</strong></button>
+            </form>
+         </li>
+         <li>
+            <button class="deleteproject_close btn btn-green">Cancel</button>
+         </li>
+      </ul>
+   </div>
+</div>
+<!-- /#deleteproject -->
+<script src="/static/js/plugins/popupoverlay/deleteproject.js"></script>
+<script src="/static/js/derisk/editproject.js"></script>
 {% endblock %}
 {% block content %}
-                <!-- begin PAGE TITLE AREA -->
-                <!-- Use this section for each page's title and breadcrumb layout. In this example a date range picker is included within the breadcrumb. -->
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="page-title">
-                            <h1>Edit Project<small> Edit the information of your project</small>
-                            </h1>
-                            <ol class="breadcrumb">
-                                <li class="active"><i class="fa fa-building-o"></i> Edit Project</li>
-                            </ol>
-                        </div>
-                    </div>
-                    <!-- /.col-lg-12 -->
-                </div>
-                <!-- /.row -->
-                <!-- end PAGE TITLE AREA -->
-
-               <div class="row">
-			      <div class="col-lg-8 col-sm-8">
-				 <div>
-				</div>
-				  <div class="row">
-                    <div class="col-lg-8 col-sm-8">
-					<div>
-					<a class="btn btn-red btn-lg deleteproject_open" href="#deleteproject">Delete Project</a>
-					</div>
-					 <div class="portlet portlet-default">
-					 <div class="portlet-body">
-					 <div style="text-align:left"><h3 style="color:#34495e;margin-bottom:25px;">Edit Project </h3>
-					 </div>
-					<form action="" method="post">{% csrf_token %}
-						{{ form.as_p }}
-						<input type="submit" value="Update" />
-					</form>
-					 </div>
-					 </div>
-                    </div>
-                 </div>
-                 <!-- end of row -->
+<!-- begin PAGE TITLE AREA -->
+<!-- Use this section for each page's title and breadcrumb layout. In this example a date range picker is included within the breadcrumb. -->
+<div class="row">
+   <div class="col-lg-12">
+      <div class="page-title">
+         <h1>Edit Project<small> Edit the information of your project</small>
+         </h1>
+         <ol class="breadcrumb">
+            <li class="active"><i class="fa fa-building-o"></i> Edit Project</li>
+         </ol>
+      </div>
+   </div>
+   <!-- /.col-lg-12 -->
+</div>
+<!-- /.row -->
+<!-- end PAGE TITLE AREA -->
+<div class="row">
+   <div class="col-lg-12 col-sm-12">
+      <div class="row">
+         <div class="editproject-tabs col-lg-3 col-sm-3">
+            <ul id="myPills" class="nav nav-pills nav-stacked" style="text-align:right">
+               <li class="active"><a onclick="$('#myAdvancedPills').addClass('hidden');" href="#pillSimple" data-toggle="tab">Simple data entry</a>
+               </li>
+               <li class="">
+			      <a onclick="$('#myAdvancedPills').removeClass('hidden');" href="#pillAdvanced" data-toggle="tab">Advanced data entry</a>
+               </li>
+            </ul>
+            <ul id="myAdvancedPills" class="nav nav-pills nav-stacked hidden" style="text-align:right">
+               <li class="active"><a href="#pillSector" data-toggle="tab">Sector Information</a>
+               </li>
+               <li class="">
+			      <a href="#pillEnergyEfficiencyInvestment" data-toggle="tab">Energy Efficiency Investment</a>
+               </li>
+	          <li class="">
+			      <a href="#pillEnergyConsumptionData" data-toggle="tab">Energy Consumption Data</a>
+               </li>
+	          <li class="">
+			      <a href="#pillAdjustmentFactors" data-toggle="tab">Adjustment Factors</a>
+               </li>
+               <li class="">
+			      <a href="#pillFinancialIndicators" data-toggle="tab">Financial Indicators</a>
+               </li>
+	          <li class="">
+			      <a href="#pillQualitativeIndicators" data-toggle="tab">Qualitative Indicators</a>
+               </li>
+	          <li class="">
+			      <a href="#pillEnergySavings" data-toggle="tab">Energy Savings</a>
+               </li>
+               <li class="">
+			      <a href="#pillEnergyPrices" data-toggle="tab">Energy Prices</a>
+               </li>
+	          <li class="">
+			      <a href="#pillEnergyConsumptionActual" data-toggle="tab">Energy Consumption (actual)</a>
+               </li>
+	          <li class="">
+			      <a href="#pillEnergyConsumptionAdjustment" data-toggle="tab">Energy Consumption (adjusted)</a>
+               </li>
+               <li class="">
+			      <a href="#pillOther" data-toggle="tab">Other Information</a>
+               </li>
+            </ul>
+         </div>
+         <div class="editproject-fields col-lg-9 col-sm-9">
+            <div id="editproject-tabContent" class="tab-content">
+               <div class="tab-pane fade in active" id="pillSimple">
+                    <form action="" method="post">{% csrf_token %}
+                     {{ form.as_p }}
+                     <input type="submit" value="Update" />
+                  </form>
+               </div>
+         <div class="tab-pane fade" id="pillAdvanced">
+            <div id="advancedproject-tabContent" class="tab-content">
+               <div class="tab-pane fade in active" id="pillSector">
+                   pillSector
+               </div>
+               <div class="tab-pane fade" id="pillEnergyEfficiencyInvestment">
+                pillEnergyEfficiencyInvestment
+               </div>
+               <div class="tab-pane fade" id="pillEnergyConsumptionData">
+                   pillEnergyConsumptionData
+               </div>
+               <div class="tab-pane fade" id="pillAdjustmentFactors">
+                pillAdjustmentFactors
+               </div>
+               <div class="tab-pane fade" id="pillFinancialIndicators">
+                   pillFinancialIndicators
+               </div>
+               <div class="tab-pane fade" id="pillQualitativeIndicators">
+                pillQualitativeIndicators
+               </div>
+               <div class="tab-pane fade" id="pillEnergySavings">
+                   pillEnergySavings
+               </div>
+               <div class="tab-pane fade" id="pillEnergyPrices">
+                pillEnergyPrices
+               </div>
+               <div class="tab-pane fade" id="pillEnergyConsumptionActual">
+                   pillEnergyConsumptionActual
+               </div>
+               <div class="tab-pane fade" id="pillAdjustmentFactors">
+                pillEnergyConsumptionAdjustment
+               </div>
+               <div class="tab-pane fade" id="pillOther">
+                   pillOther
+               </div>
+		            </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+<!-- end of row -->
 {% endblock %}
