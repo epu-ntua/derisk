@@ -33,7 +33,7 @@ class ProjectUpdate(LoginRequiredMixin,UpdateView):
 @login_required()
 def ProjectCreate(request, **kwargs):
     if request.method == 'POST':
-        newProject = Project.objects.create(created_by = request.user,date_updated = datetime.datetime.now(), date_created = datetime.datetime.now(),sharing_level='PRI')
+        newProject = Project.objects.create(created_by = request.user)
     return HttpResponseRedirect('/projects/' + str(newProject.id))
 
 @login_required()

@@ -8,8 +8,8 @@ class Measure(models.Model):
 # Create your models here.
 class Project(models.Model):
     # General information
-    date_created = models.DateTimeField(blank=True, null=True)
-    date_updated = models.DateTimeField(blank=True, null=True)
+    date_created = models.DateTimeField(auto_now_add=True)
+    date_updated = models.DateTimeField(auto_now=True)
     created_by = models.ForeignKey(User)
     sharing_level = models.CharField(help_text = 'Please describe the sharing level of this project',max_length=3,blank=False, default = 'PRI',choices = SHARINGLEVEL)
     title_2 = models.CharField(max_length=500, blank=True, null=True)
