@@ -33,6 +33,9 @@ padding-bottom:10px;
 	padding-bottom:30px;
 	font-size:16px;
 }
+.modal-dialog {
+    width: 800px;
+}
 .myfield-container{
  text-align:right;
 }

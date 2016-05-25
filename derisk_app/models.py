@@ -3,8 +3,10 @@ from django.contrib.auth.models import User
 from derisk_app.lists import *
 
 class Measure(models.Model):
-    code = models.CharField(max_length=50, blank=False)
-    title = models.CharField(max_length=200, blank=False)
+  def __str__(self):
+     return 'Measure: ' + self.title
+  code = models.CharField(max_length=50, blank=False)
+  title = models.CharField(max_length=200, blank=False)
 # Create your models here.
 class Project(models.Model):
     # General information
@@ -62,7 +64,7 @@ class Project(models.Model):
     coolingload_48 = models.CharField(max_length=500, help_text='Please specify cooling load',blank=True, null=True)
     totalvalueofasset_49 = models.DecimalField(max_digits=25, decimal_places=10,help_text='Please specify Total Value  of Asset (in Euro)',blank=True, null=True)
     totalvalueofinvestment_50 = models.DecimalField(max_digits=25, decimal_places=10,help_text='Please specify Total Value  of investment (inclusive of EE component)',blank=True, null=True)
-    valueofeeinvestment_51 = models.DecimalField(max_digits=25, decimal_places=10,help_text='Please specify Value of EE investment (in Euro)',blank=True, null=True)
+    valueofeeinvestment_51 = models.DecimalField(max_digits=25, decimal_places=2,help_text='Please specify Value of EE investment (in Euro)',blank=True, null=True)
     annualenergycostsavings_52 = models.DecimalField(max_digits=25, decimal_places=10,help_text='Please specify Annual energy cost savings (latest, or representative year) (in Euro)',blank=True, null=True)
     additionalfinancialbenefits_53 = models.DecimalField(max_digits=25, decimal_places=10,max_length=500, help_text='Please specify Additional financial benefits (e.g. maintenance savings) (in Euro)',blank=True, null=True)
     additionalcosts_54 = models.DecimalField(max_digits=25, decimal_places=10,help_text='Please specify Additional costs (in Euro)',blank=True, null=True)

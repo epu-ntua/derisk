@@ -228,3 +228,6 @@ class ProjectForm(BaseModelForm):
             "occupancylevel_206":"Occupancy level", 
             "typeofproductsbeingproduced_207":"Type of products being produced"
         }
+    def __init__(self, *args, **kwargs):
+        super(ProjectForm, self).__init__(*args, **kwargs)
+        #self.fields['valueofeeinvestment_51'].widget.attrs['step'] = 0.02

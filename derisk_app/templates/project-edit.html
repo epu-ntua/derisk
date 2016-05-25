@@ -5,6 +5,7 @@
 {% block manageprojectsmenu %}active{% endblock %}
 {% block css %}
 <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.2/css/select2.min.css" rel="stylesheet" />
+<link rel="stylesheet" href="/static/css/jsTree/default/style.min.css" />
 {% endblock %}
 {% block scripts %}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.2/js/select2.min.js"></script>
@@ -29,6 +30,7 @@
    </div>
 </div>
 <!-- /#deleteproject -->
+<script src="/static/js/jsTree/jstree.min.js"></script>
 <script src="/static/js/plugins/popupoverlay/deleteproject.js"></script>
 <script src="/static/js/derisk/editproject.js"></script>
 {% endblock %}
@@ -62,6 +64,7 @@
 			      <a onclick="$('#myAdvancedPills').removeClass('hidden');$('#button-submit-advanced').removeClass('hidden');$('#button-submit-simple').addClass('hidden');" href="#pillAdvanced" data-toggle="tab">Advanced data entry</a>
                </li>
             </ul>
+
             <ul id="myAdvancedPills" class="nav nav-pills nav-stacked hidden" style="text-align:right">
                <li class="active"><a href="#pillSector" data-toggle="tab">Project and Sector Information </a>
                </li>
@@ -109,7 +112,7 @@
 <form action="" method="post">{% csrf_token %}{{form.errors}}
                     <h3 style="font-style:italic">Project and Sector Information </h3>
 					<hr>
-			   <div class='row myfield-row'><div class='myfield-container col-lg-3 col-sm-3'><div data-toggle="tooltip" data-placement="top" title="A non confidential title for the project">{{ form.title_2.label_tag }}</div></div><div class='col-lg-6 col-sm-6'> {{ form.title_2 }}</div></div>
+			   <div class='row myfield-row'><div class='myfield-container col-lg-3 col-sm-3'><div data-toggle="tooltip" data-placement='right' title="A non confidential title for the project">{{ form.title_2.label_tag }}</div></div><div class='col-lg-6 col-sm-6'> {{ form.title_2 }}</div></div>
 <div class='row myfield-row'><div class='myfield-container col-lg-3 col-sm-3'><div data-toggle='tooltip' data-placement='right' title='A description of the project'>{{ form.description.label_tag }}</div></div> <div class='col-lg-6 col-sm-6'> {{ form.description }}</div></div>
 <div class='row myfield-row'><div class='myfield-container col-lg-3 col-sm-3'><div data-toggle='tooltip' data-placement='right' title='The country of where the investment is located '>{{ form.country_3.label_tag }}</div></div> <div class='col-lg-6 col-sm-6'> {{ form.country_3 }}</div></div>
 <div class='row myfield-row'><div class='myfield-container col-lg-3 col-sm-3'><div data-toggle='tooltip' data-placement='right' title='The ZIP Code of where the investment is located '>{{ form.nutscode_4.label_tag }}</div></div> <div class='col-lg-6 col-sm-6'> {{ form.nutscode_4 }}</div></div>
@@ -122,7 +125,9 @@
 <div class='row myfield-row'><div class='myfield-container col-lg-3 col-sm-3'><div data-toggle='tooltip' data-placement='right' title='Please specify  the Floor area of building in m2 '>{{ form.floorarea_17.label_tag }}</div></div> <div class='col-lg-6 col-sm-6'> {{ form.floorarea_17 }}</div></div>
 			   <h3 style="font-style:italic;margin-top:50px">Energy Efficiency Investment </h3>
 					<hr>
-<div class='row myfield-row'><div class='myfield-container col-lg-3 col-sm-3'><div data-toggle='tooltip' data-placement='right' title='Please select which measures are included in the investment. You can add more than one, separated with semicolon (;)'>{{ form.measures_18.label_tag }}</div></div> <div class='col-lg-6 col-sm-6'> {{ form.measures_18 }}</div></div>
+<div class='row myfield-row'><div class='myfield-container col-lg-3 col-sm-3'><div data-toggle='tooltip' data-placement='right' title='Please select which measures are included in the investment. You can add more than one, separated with semicolon (;)'>{{ form.measures_18.label_tag }}</div></div> <div class='col-lg-6 col-sm-6'> {{ form.measures_18 }}                                <button class="btn btn-green btn-lg" data-toggle="modal" data-target="#flexModal">
+                                    Select Measure
+                                </button></div></div>
 <div class='row myfield-row'><div class='myfield-container col-lg-3 col-sm-3'><div data-toggle='tooltip' data-placement='right' title='Please state the Date investment became operational (month/year)'>{{ form.dateinvestmentbecameoperational_29.label_tag }}</div></div> <div class='col-lg-6 col-sm-6'> {{ form.dateinvestmentbecameoperational_29 }}</div></div>
 			   <h3 style="font-style:italic;margin-top:50px">Energy Consumption Data and Data Sources</h3>
 					<hr>
@@ -145,7 +150,7 @@
             <div id="advancedproject-tabContent" class="tab-content">
                <div class="tab-pane fade in active" id="pillSector">
 			   <h3 style="margin-bottom:40px">Project and Sector Information </h3>
-			   <div class='row myfield-row'><div class='myfield-container col-lg-3 col-sm-3'><div data-toggle="tooltip" data-placement="top" title="A non confidential title for the project">{{ form.title_2.label_tag }}</div></div><div class='col-lg-6 col-sm-6'> {{ form.title_2 }}</div></div>
+			   <div class='row myfield-row'><div class='myfield-container col-lg-3 col-sm-3'><div data-toggle="tooltip" data-placement='right' title="A non confidential title for the project">{{ form.title_2.label_tag }}</div></div><div class='col-lg-6 col-sm-6'> {{ form.title_2 }}</div></div>
 <div class='row myfield-row'><div class='myfield-container col-lg-3 col-sm-3'><div data-toggle='tooltip' data-placement='right' title='A description of the project'>{{ form.description.label_tag }}</div></div> <div class='col-lg-6 col-sm-6'> {{ form.description }}</div></div>
 <div class='row myfield-row'><div class='myfield-container col-lg-3 col-sm-3'><div data-toggle='tooltip' data-placement='right' title='The country of where the investment is located '>{{ form.country_3.label_tag }}</div></div> <div class='col-lg-6 col-sm-6'> {{ form.country_3 }}</div></div>
 <div class='row myfield-row'><div class='myfield-container col-lg-3 col-sm-3'><div data-toggle='tooltip' data-placement='right' title='The ZIP Code of where the investment is located '>{{ form.nutscode_4.label_tag }}</div></div> <div class='col-lg-6 col-sm-6'> {{ form.nutscode_4 }}</div></div>
@@ -393,4 +398,25 @@
 </div>
 
 <!-- end of row -->
+                                <!-- Flex Modal -->
+                                <div class="modal modal-flex fade" id="flexModal" tabindex="-1" role="dialog" aria-labelledby="flexModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                                <h4 class="modal-title" id="flexModalLabel">Select Measures</h4>
+                                            </div>
+                                            <div class="modal-body">
+												<div id="jstree_measures_div">
+												{% include 'tree.html' %}
+												</div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-green">Ok</button>
+                                            </div>
+                                        </div>
+                                        <!-- /.modal-content -->
+                                    </div>
+                                    <!-- /.modal-dialog -->
+                                </div>
 {% endblock %}
