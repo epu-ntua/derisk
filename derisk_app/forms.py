@@ -1,17 +1,29 @@
 from django import forms
+from django.forms import Textarea
 from derisk_app.models import *
 
+class BaseForm(forms.Form):
+    def __init__(self, *args, **kwargs):
+        kwargs.setdefault('label_suffix', '')  # globally override the Django >=1.6 default of ':'
+        super(BaseForm, self).__init__(*args, **kwargs)
 
-class ProjectForm(forms.ModelForm):
+class BaseModelForm(forms.ModelForm):
+    def __init__(self, *args, **kwargs):
+        kwargs.setdefault('label_suffix', '')  # globally override the Django >=1.6 default of ':'
+        super(BaseModelForm, self).__init__(*args, **kwargs)
+
+class ProjectForm(BaseModelForm):
     class Meta:
         model = Project
-        exclude = ('created_by',)
+        exclude = ('created_by','sharing_level')
+        widgets = {
+          'description': Textarea(attrs={'cols': 80, 'rows': 1}),
+        }
         labels = {
-            "title_2": "Rule Title",
             "title_2":"Project Title", 
             "description":"Description", 
             "country_3":"Country", 
-            "nutscode_4":"ZIP Code", 
+            "nutscode_4":"NUTS-2 Code", 
             "city_5":"City/locality", 
             "fulladdress_6":"Full Address", 
             "organizationname_7":"Company name", 

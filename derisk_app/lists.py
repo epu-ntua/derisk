@@ -1,5 +1,5 @@
 ﻿COUNTRIES = (
-    ('', '----------'),
+    ('', ''),
     ('AT', 'Austria'),
     ('BE', 'Belgium'),
     ('BG', 'Bulgaria'),
@@ -33,7 +33,7 @@
 )
 
 ORGANIZATIONSIZE = (
-    ('','----'),
+    ('',''),
     ('MICRO','micro enterprises: with less than 10 persons employed'),
     ('SMALL','small enterprises: with 10-49 persons employed'),
     ('MEDIUM','medium-sized enterprises: with 50-249 persons employed'),
@@ -41,7 +41,7 @@ ORGANIZATIONSIZE = (
 )
 
 BUILDINGTYPE = (
-   ('','----'),
+   ('',''),
    ('DETACHED','detached single family dwellings'),
    ('SINGLE','other single family dwellings'),
    ('MULTI4','multi-family buildings 1-4 storeys'),
@@ -57,13 +57,13 @@ BUILDINGTYPE = (
 )
 
 OWNERSHIP = (
-   ('','----'),
+   ('',''),
    ('OWN','owned'),
    ('RENT','rented'),
 )
 
 VERIFIED = (
-  ('','----'),
+  ('',''),
   ('By third party','By third party'),
   ('by ESCO','by ESCO'),
   ('by other','by other'),

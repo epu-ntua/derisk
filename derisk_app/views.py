@@ -25,10 +25,11 @@ class ProjectListView(LoginRequiredMixin,ListView):
     context_object_name = 'projects'
 
 class ProjectUpdate(LoginRequiredMixin,UpdateView):
+    def get_success_url(self):
+        return '/projects/' + self.kwargs['pk']
     model = Project
     form_class = ProjectForm
     template_name = 'project-edit.html'
-    success_url = '/projects/'
 
 @login_required()
 def ProjectCreate(request, **kwargs):

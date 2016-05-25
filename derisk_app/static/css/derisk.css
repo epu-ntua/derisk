@@ -21,7 +21,25 @@
  border-bottom: 1px solid #ccc;
  border-left: 1px solid #ccc;
  padding-top:20px;
+ padding-right:0px;
 }
+.myfield-row{
+padding-top: 10px;
+padding-bottom:10px;
+}
+.tooltip-inner {
+    width: 450px;
+	padding-top:30px;
+	padding-bottom:30px;
+	font-size:16px;
+}
+.myfield-container{
+ text-align:right;
+}
+#editproject-tabContent{
+  padding-left:45px;
+}
+
 .editproject-fields {
  background-color:white;
   border-bottom: 1px solid #ccc;
