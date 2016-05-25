@@ -125,8 +125,8 @@
 <div class='row myfield-row'><div class='myfield-container col-lg-3 col-sm-3'><div data-toggle='tooltip' data-placement='right' title='Please specify  the Floor area of building in m2 '>{{ form.floorarea_17.label_tag }}</div></div> <div class='col-lg-6 col-sm-6'> {{ form.floorarea_17 }}</div></div>
 			   <h3 style="font-style:italic;margin-top:50px">Energy Efficiency Investment </h3>
 					<hr>
-<div class='row myfield-row'><div class='myfield-container col-lg-3 col-sm-3'><div data-toggle='tooltip' data-placement='right' title='Please select which measures are included in the investment. You can add more than one, separated with semicolon (;)'>{{ form.measures_18.label_tag }}</div></div> <div class='col-lg-6 col-sm-6'> {{ form.measures_18 }}                                <button class="btn btn-green btn-lg" data-toggle="modal" data-target="#flexModal">
-                                    Select Measure
+<div class='row myfield-row'><div class='myfield-container col-lg-3 col-sm-3'><div data-toggle='tooltip' data-placement='right' title='Please select which measures are included in the investment. You can add more than one, separated with semicolon (;)'>{{ form.measures_18.label_tag }}</div></div> <div class='col-lg-6 col-sm-6'> {{ form.measures_18 }}     <button class="btn btn-green btn-lg" data-toggle="modal" data-target="#flexModal">
+                                    Select Measure from Tree
                                 </button></div></div>
 <div class='row myfield-row'><div class='myfield-container col-lg-3 col-sm-3'><div data-toggle='tooltip' data-placement='right' title='Please state the Date investment became operational (month/year)'>{{ form.dateinvestmentbecameoperational_29.label_tag }}</div></div> <div class='col-lg-6 col-sm-6'> {{ form.dateinvestmentbecameoperational_29 }}</div></div>
 			   <h3 style="font-style:italic;margin-top:50px">Energy Consumption Data and Data Sources</h3>
@@ -170,7 +170,9 @@
                </div>
                <div class="tab-pane fade" id="pillEnergyEfficiencyInvestment">
 			   <h3 style="margin-bottom:40px">Energy Efficiency Investment </h3>
-<div class='row myfield-row'><div class='myfield-container col-lg-3 col-sm-3'><div data-toggle='tooltip' data-placement='right' title='Please select which measures are included in the investment. You can add more than one, separated with semicolon (;)'>{{ form.measures_18.label_tag }}</div></div> <div class='col-lg-6 col-sm-6'> {{ form.measures_18 }}</div></div>
+<div class='row myfield-row'><div class='myfield-container col-lg-3 col-sm-3'><div data-toggle='tooltip' data-placement='right' title='Please select which measures are included in the investment. You can add more than one, separated with semicolon (;)'>{{ form.measures_18.label_tag }}</div></div> <div class='col-lg-6 col-sm-6'> {{ form.measures_18 }}<button class="btn btn-green btn-lg" data-toggle="modal" data-target="#flexModal">
+                                    Select Measure from Tree
+                                </button></div></div>
 <div class='row myfield-row'><div class='myfield-container col-lg-3 col-sm-3'><div data-toggle='tooltip' data-placement='right' title='Only valid for measures 1 (Heating) to 10 (Pumps), Please  specify total annual energy demand for relevant components before investment (kWh/y). Relevant components means the components that are included in the project. '>{{ form.energydemandbefore_19.label_tag }}</div></div> <div class='col-lg-6 col-sm-6'> {{ form.energydemandbefore_19 }}</div></div>
 <div class='row myfield-row'><div class='myfield-container col-lg-3 col-sm-3'><div data-toggle='tooltip' data-placement='right' title='Please  specify total annual energy demand for relevant components after investment (kWh/y). Relevant components means the components that are included in the project. Only valid for measures 1 (Heating) to 10 (Pumps)'>{{ form.energydemandafter_20.label_tag }}</div></div> <div class='col-lg-6 col-sm-6'> {{ form.energydemandafter_20 }}</div></div>
 <div class='row myfield-row'><div class='myfield-container col-lg-3 col-sm-3'><div data-toggle='tooltip' data-placement='right' title='Please  specify total initial capacity (kW) for relevant components. Relevant components means the components that are included in the project. If more components, use weighed average of relevant components. Only valid for measures 1 (Heating) to 10 (Pumps)'>{{ form.initialcapacity_21.label_tag }}</div></div> <div class='col-lg-6 col-sm-6'> {{ form.initialcapacity_21 }}</div></div>
@@ -412,7 +414,7 @@
 												</div>
                                             </div>
                                             <div class="modal-footer">
-                                                <button type="button" class="btn btn-green">Ok</button>
+                                                <button type="button" class="btn btn-green" data-dismiss="modal">Ok</button>
                                             </div>
                                         </div>
                                         <!-- /.modal-content -->

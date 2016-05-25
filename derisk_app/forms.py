@@ -2,6 +2,46 @@ from django import forms
 from django.forms import Textarea
 from derisk_app.models import *
 
+from django.forms import SelectMultiple
+
+MEASURE_CODES = {m.pk: m.code for m in Measure.objects.all()}
+
+class CustomSelectWidget(SelectMultiple):
+    def render(self, name, value, attrs=None):
+        # create the select tag
+        result = '<select name="' + name + '"'
+        # get current & default attributes
+        for attr in self.attrs:
+            result += ' ' + attr + '="' + self.attrs[attr] + '"'
+        for attr in attrs:
+            result += ' ' + attr + '="' + attrs[attr] + '"'
+
+        result += '>'
+
+        if value:
+            if type(value) == int:
+                values = [int(value)]
+            else:
+                values = [int(val) for val in value]
+
+        # build options
+        for choice in self.choices:
+            result += '<option value="' + str(choice[0]) + '"'
+            if not value:
+                if choice[0] == '':
+                    result += ' selected="selected"'
+            elif choice[0] in values:
+                result += ' selected="selected"'
+    
+            # TODO add the custom data-attribute here
+            result += ' data-tree-code="' + MEASURE_CODES[choice[0]] + '"'
+            result += '>' + choice[1] + '</option>'
+   
+        # close select & return
+        result += '</select>'
+        return result
+
+
 class BaseForm(forms.Form):
     def __init__(self, *args, **kwargs):
         kwargs.setdefault('label_suffix', '')  # globally override the Django >=1.6 default of ':'
@@ -18,6 +58,7 @@ class ProjectForm(BaseModelForm):
         exclude = ('created_by','sharing_level')
         widgets = {
           'description': Textarea(attrs={'cols': 80, 'rows': 1}),
+          'measures_18': CustomSelectWidget(attrs={'multiple': 'multiple'}),
         }
         labels = {
             "title_2":"Project Title", 
