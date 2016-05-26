@@ -74,3 +74,64 @@ SHARINGLEVEL = (
   ('PRI','Private'),
   ('ANA','Share for analysis'),
 )
+
+#Dropdownlist contain other
+
+INVESTMENTBUILDING =(
+  ('Building','Building'),
+  ('Industry','Industry'),
+  ('District heating','District heating'),
+  ('Street lighting','Street lighting'),
+  ('Other','Other'),
+)
+
+INDUSTRYSECTOR =(
+  ('Accommodation and food service','Accommodation and food service'),
+  ('Administrative and support services','Administrative and support services'),
+  ('Agriculture/forestry/fishing','Agriculture/forestry/fishing'),
+  ('Arts, entertainment and recreation','Arts, entertainment and recreation'),
+  ('Construction','Construction'),
+  ('Education','Education'),
+  ('Electricity, gas, steam and air conditioning supply','Electricity, gas, steam and air conditioning supply'),
+  ('Finance/insurance','Finance/insurance'),
+  ('Human health and social work','Human health and social work'),
+  ('Information and communication','Information and communication'),
+  ('Manufacturing','Manufacturing'),
+  ('Mining/quarrying','Mining/quarrying'),
+  ('Professional, scientific and technical','Professional, scientific and technical'),
+  ('Public administration and defence','Public administration and defence'),
+  ('Real estate','Real estate'),
+  ('Transportation and storage','Transportation and storage'),
+  ('Water/waste management','Water/waste management'),
+  ('Wholesale and retail trade/motor vehicles','Wholesale and retail trade/motor vehicles'),
+  ('Other','other')
+)
+
+SOURCECONSUMPTIONBEFORE = (
+  ('Energy audit actual','Energy audit actual'),
+  ('energy audit norm','energy audit norm'),
+  ('feasibility study','feasibility study'),
+  ('other','other')
+)
+
+BASISFORECAST = (
+  ('Energy audit actual','Energy audit actual'),
+  ('energy audit norm','energy audit norm'),
+  ('feasibility study','feasibility study'),
+  ('other','other')
+)
+
+SOURCECONSUMPTIONAFTER = (
+  ('Ex post energy audit actual','Ex post energy audit actual'),
+  ('ex post energy audit norm','ex post energy audit norm'),
+  ('actual reported by building manager','actual reported by building manager'),
+  ('other','other'),
+)
+
+SATISFACTION = (
+  ('signficantly worse than expected','signficantly worse than expected'),
+  ('slightly worse than expected','slightly worse than expected'),
+  ('as expected','as expected'),
+  ('slightly better than expected','slightly better than expected'),
+  ('signficantly better than expected','signficantly better than expected'),
+)
