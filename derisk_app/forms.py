@@ -244,7 +244,7 @@ class ProjectForm(BaseModelForm):
             "adjustedenergyconsbeforeprocessenergy_181":"process energy", 
             "adjustedenergyconsbeforelighting_182":"lighting", 
             "adjustedenergyconsbeforeappliances_183":"appliances", 
-            "adjustedenergyconsaftertotal_184":"split by fuel", 
+            "adjustedenergyconsaftertotal_184":"Total", 
             "adjustedenergyconsaftergridelectricity_185":"grid electricity", 
             "adjustedenergyconsaftergas_186":"gas", 
             "adjustedenergyconsafteroil_187":"oil", 
