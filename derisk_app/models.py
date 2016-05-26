@@ -7,6 +7,12 @@ class Measure(models.Model):
      return 'Measure: ' + self.title
   code = models.CharField(max_length=50, blank=False)
   title = models.CharField(max_length=200, blank=False)
+
+class Benefit(models.Model):
+  def __str__(self):
+     return 'Benefit: ' + self.description
+  description = models.CharField(max_length=50, blank=False)
+ 
 # Create your models here.
 class Project(models.Model):
     # General information
@@ -86,7 +92,7 @@ class Project(models.Model):
     loanrepaymentterm_64 = models.DecimalField(max_digits=25, decimal_places=0,help_text='Please specify Loan repayment term',blank=True, null=True)
     interestrate_65 = models.DecimalField(max_digits=25, decimal_places=4,help_text='Please specify Interest rate',blank=True, null=True)
     keyreasonsformakinginvestment_66 = models.CharField(max_length=500, help_text='Please state key reasons for making investment',blank=True, null=True)
-    nonfinancialbenefits_67 = models.CharField(max_length=500, help_text='Please state any non-financial benefits realised by the project   (Dropdown List (see Lists tab)). Add multiple "benefits" by separating each  "benefit" with semicolon (;)',blank=True, null=True)
+    nonfinancialbenefits_67 = models.ManyToManyField(Benefit, help_text='Please state any non-financial benefits realised by the project',blank=True)
     financialperformance_68 = models.CharField(max_length=500, help_text='Please rate actual financial performance compared with expectation',blank=True, null=True, choices = SATISFACTION)
     overallsatisfaction_69 = models.CharField(max_length=500, help_text='Please rate overall satisfaction with the investment',blank=True, null=True,choices = SATISFACTION)
     otherinformation_70 = models.TextField( help_text='Please describe/attach any other information you would like to share concerning your investment, e.g. technical specifications, before/after status, etc',blank=True, null=True)
