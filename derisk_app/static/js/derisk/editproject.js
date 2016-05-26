@@ -57,7 +57,10 @@ $(document).ready(function () {
 	$('[data-toggle="tooltip"]').tooltip();
 	$('form input, form textarea').addClass('form-control');
 	$('form select').select2({width: '100%'});
-    $('#jstree_measures_div').jstree({
+	$('#pillSimple #id_dateinvestmentbecameoperational_29').datepicker({autoclose: true, viewMode: "months",minViewMode: "months",format:"mm/yyyy",todayHighlight: true});
+    $('#pillAdvanced #id_dateinvestmentbecameoperational_29').datepicker({autoclose: true, viewMode: "months",minViewMode: "months",format:"mm/yyyy",todayHighlight: true});
+$('#pillAdvanced #id_projectstartdate_28').datepicker({autoclose: true, viewMode: "months",minViewMode: "months",format:"mm/yyyy",todayHighlight: true});
+	$('#jstree_measures_div').jstree({
 		'checkbox': {
         three_state: false,
         cascade: 'up'
