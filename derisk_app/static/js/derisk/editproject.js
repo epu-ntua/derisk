@@ -1,23 +1,65 @@
 function initializeTreeSimple(){
     $('#jstree_measures_div').jstree('uncheck_all')
     $('#jstree_measures_div').jstree('close_all')
+    //Syncronize #simple with advanced
+	$("#pillAdvanced #id_measures_18").val("").trigger("change");
 	var tree_codes = [];
+	var checked_ids =[];
     $("#pillSimple #id_measures_18 > option:selected").each(function(i, item) {
 	    tree_codes[i] = $(item).data('tree-code');
 		$('#jstree_measures_div').jstree('check_node', tree_codes[i]);
 		$('#jstree_measures_div').jstree()._open_to(tree_codes[i]);
+		checked_ids.push($(item).val());
 	});
+	if (checked_ids != $("#pillAdvanced #id_measures_18")) 
+	     $("#pillAdvanced #id_measures_18").val(checked_ids).trigger("change");
 }
 function initializeTreeAdvanced(){
     $('#jstree_measures_div').jstree('uncheck_all')
     $('#jstree_measures_div').jstree('close_all')
+    //Syncronize #simple with advanced
+	$("#pillSimple #id_measures_18").val("").trigger("change");
 	var tree_codes = [];
+	var checked_ids =[];
     $("#pillAdvanced #id_measures_18 > option:selected").each(function(i, item) {
 	    tree_codes[i] = $(item).data('tree-code');
 		$('#jstree_measures_div').jstree('check_node', tree_codes[i]);
 		$('#jstree_measures_div').jstree()._open_to(tree_codes[i]);
+		checked_ids.push($(item).val());
 	});
+		if (checked_ids != $("#pillSimple #id_measures_18")) 
+	     $("#pillSimple #id_measures_18").val(checked_ids).trigger("change");
 }
+
+function syncronizeSimpleWithAdvanced()
+{
+	    $('#pillAdvanced #id_dateinvestmentbecameoperational_29').on('change', function(e) {
+           $('#pillSimple #id_dateinvestmentbecameoperational_29').val($('#pillAdvanced #id_dateinvestmentbecameoperational_29').val());
+		});
+	    $('#pillSimple #id_dateinvestmentbecameoperational_29').on('change', function(e) {
+           $('#pillAdvanced #id_dateinvestmentbecameoperational_29').val($('#pillSimple #id_dateinvestmentbecameoperational_29').val());
+		});
+		$('.derisk-mirror').on('keyup', function(e) {
+			var $this = $(this),
+				name = $this.attr('name'),
+				$otherInputs = $('.derisk-mirror[name="' + name + '"]').not(this);
+				
+				$otherInputs.each(function(i, otherInput) {
+					$(otherInput).val($this.val())
+				})
+		});
+		$('select.derisk-mirror').on('change', function(e) {
+			var $this = $(this);
+				name = $this.attr('name');
+				$otherInputs = $('select.derisk-mirror[name="' + name + '"]').not(this);
+				$otherInputs.each(function(i, otherInput) {
+					if ($otherInputs.val() != $this.val()){
+					   $otherInputs.val($this.val()).trigger("change");
+					}
+				})
+		});
+}
+
 
 function initDropDownListswithOther(){
 	//Select other option Simple Tab
@@ -68,11 +110,11 @@ $('#pillAdvanced #id_projectstartdate_28').datepicker({autoclose: true, viewMode
 		'plugins': ["checkbox"]
 		});
     initializeTreeSimple();
-	
-	$("#pillSimple #id_measures_18").on('change', function() {
+	syncronizeSimpleWithAdvanced();
+	$("#pillSimple #id_measures_18").on('select2:select, select2:unselect', function() {
 		initializeTreeSimple();
 	});
-	$("#pillAdvanced #id_measures_18").on('change', function() {
+	$("#pillAdvanced #id_measures_18").on('select2:select select2:unselect', function() {
 		initializeTreeAdvanced();
 	});
 	
