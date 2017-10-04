@@ -1,315 +1,386 @@
+{% load i18n %}
 <ul>
-<li id='001'><b>Heating (process heating)</b>
+<li id='001' data-jstree='{"icon":"/static/img/jstree/heating.png"}'><b>{% trans 'Heating (process heating)' %}</b>
 <ul>
-	<li id='001001'>Oil/gas fired hot water boilers
+	<li id='001001'>{% trans 'Oil/gas fired hot water boilers' %}
 	<ul>
-		<li id='001001001'>operational optimization (controls and automation)</li>
-		<li id='001001002'>technical optimization (component renewal/supplement/maintenance)</li>
-		<li id='001001003'>complete renewal</li>
-		<li id='001001004'>other</li>
+		<li id='001001001'>{% trans 'operational optimization (controls and automation)'%}</li>
+		<li id='001001002'>{% trans 'technical optimization (component renewal/supplement/maintenance)'%}</li>
+		<li id='001001003'>{% trans 'complete renewal'%}</li>
+		<li id='001001004'>{% trans 'other'%}</li>
 	</ul>
 	</li>
 </ul>
 <ul>
-	<li id='001002'>Oil/gas fired steam boilers
+	<li id='001002'>{% trans 'Oil/gas fired steam boilers'%}
 		<ul>
-			<li id='001002001'>operational optimization (controls and automation)</li>
-			<li id='001002002'>technical optimization (component renewal/supplement/maintenance)</li>
-			<li id='001002003'>complete renewal</li>
-			<li id='001002004'>other</li>
+			<li id='001002001'>{% trans 'operational optimization (controls and automation)'%}</li>
+			<li id='001002002'>{% trans 'technical optimization (component renewal/supplement/maintenance)'%}</li>
+			<li id='001002003'>{% trans 'complete renewal'%}</li>
+			<li id='001002004'>{% trans 'other'%}</li>
 		</ul>
 	</li>
 </ul>
 <ul>
-	<li id='001003'>Engine CHP
+	<li id='001003'>{% trans 'Engine CHP'%}
 	    <ul>
-		<li id='001003001'>operational optimization (controls and automation)</li>
-		<li id='001003002'>technical optimization (component renewal/supplement/maintenance)</li>
-		<li id='001003003'>complete renewal</li>
-		<li id='001003004'>other measures</li>
+		<li id='001003001'>{% trans 'operational optimization (controls and automation)'%}</li>
+		<li id='001003002'>{% trans 'technical optimization (component renewal/supplement/maintenance)'%}</li>
+		<li id='001003003'>{% trans 'complete renewal'%}</li>
+		<li id='001003004'>{% trans 'other measures'%}</li>
 		</ul>
 	</li>
 </ul>
 <ul>
-	<li id='001004'>Optimisation of distribution systems
+	<li id='001004'>{% trans 'Optimisation of distribution systems'%}
 	<ul>
-		<li id='001004001'>insulation of pipes</li>
-		<li id='001004002'>insulation of fitings, containements and other surfaces</li>
+		<li id='001004001'>{% trans 'insulation of pipes'%}</li>
+		<li id='001004002'>{% trans 'insulation of fitings, containements and other surfaces'%}</li>
 	</ul>
 	</li>
-		<li id='001005'>other
+		<li id='001005'>{% trans 'other' %}
 		<ul>
-			<li id='001005001'>operational optimization (controls and automation)</li>
-			<li id='001005002'>technical optimization (component renewal/supplement/maintenance)</li>
-			<li id='001005003'>complete renewal</li>
-			<li id='001005004'>other (please specify)</li>
+			<li id='001005001'>{% trans 'operational optimization (controls and automation)'%}</li>
+			<li id='001005002'>{% trans 'technical optimization (component renewal/supplement/maintenance'%})</li>
+			<li id='001005003'>{% trans 'complete renewal'%}</li>
+			<li id='001005004'>{% trans 'other (please specify)'%}</li>
 		</ul>
 	</li>
 </ul>
 </li>
-<li id='002'><b>Cooling (Process cooling)</b>
+<li id='002' data-jstree='{"icon":"/static/img/jstree/cooling.png"}'>{% trans '<b>Cooling (Process cooling)</b>'%}
 <ul>
-	<li id='002001'>Chillers (centralized)
+	<li id='002001'>{% trans 'Chillers (centralized)' %}
 	<ul>
-		<li id='002001001'>operational optimization (controls and automation)</li>
-		<li id='002001002'>technical optimization (component renewal/supplement/maintenance)</li>
-		<li id='002001003'>complete renewal</li>
-		<li id='002001004'>other measures</li>
+		<li id='002001001'>{% trans 'operational optimization (controls and automation)'%}</li>
+		<li id='002001002'>{% trans 'technical optimization (component renewal/supplement/maintenance)'%}</li>
+		<li id='002001003'>{% trans 'complete renewal'%}</li>
+		<li id='002001004'>{% trans 'other measures'%}</li>
 	</ul>
 	</li>
-	<li id='002002'>Free cooling</li>
-	<li id='002003'>optimisation of distribution systems
+	<li id='002002'>{% trans 'Free cooling'%}</li>
+	<li id='002003'>{% trans 'optimisation of distribution systems'%}
 	<ul>
-		<li id='002003001'>optimisation of distribution systems - insulation of pipes</li>
-		<li id='002003002'>optimisation of distribution systems - insulation of fitings, containements and other surfaces</li>
+		<li id='002003001'>{% trans 'optimisation of distribution systems - insulation of pipes'%}</li>
+		<li id='002003002'>{% trans 'optimisation of distribution systems - insulation of fitings, containements and other surfaces'%}</li>
 	</ul>
 	</li>
-	<li id='002004'>other</li>
+	<li id='002004'>{% trans 'other'%}</li>
 </ul>
 </li>
-<li id='003'><b>Ventilation and air conditioning</b>
+
+<li id='003' data-jstree='{"icon":"/static/img/jstree/streetlighting.png"}'>{% trans '<b>Street Lighting</b>'%}
 <ul>
-	<li id='003001'>technical optimization by component renewal/supplement/maintenance</li>
-	<li id='003002'>operational optimization by controls and automation or maintenance</li>
-	<li id='003003'>complete renewal</li>
-	<li id='003004'>other</li>
+	<li id='003001'>{% trans 'relamp'%}</li>
+	<li id='003002'>{% trans 'technical optimization by component renewal/supplement/maintenance'%}</li>
+	<li id='003003'>{% trans 'operational optimization by controls and automation or maintenance'%}</li>
 </ul>
 </li>
-<li id='004'><b>Lighting</b>
+<li id='004' data-jstree='{"icon":"/static/img/jstree/lighting.png"}'>{% trans '<b>Lighting (without street lighting)</b>'%}
 <ul>
-	<li id='004001'>relamp
+	<li id='004001'>{% trans 'indoor - relamp'%}
 	<ul>
-		<li id='004001001'>relamp to LED</li>
-		<li id='004001002'>relamp to T5</li>
-		<li id='004001003'>other</li>
+		<li id='004001001'>{% trans 'relamp to LED'%}</li>
+		<li id='004001002'>{% trans 'relamp to T5'%}</li>
+		<li id='004001003'>{% trans 'other'%}</li>
 	</ul>
 	</li>
-	<li id='004002'>technical optimization by component renewal/supplement/maintenance
+	<li id='004002'>{% trans 'indoor - technical optimization by component renewal/supplement/maintenance'%}
 	<ul>
-		<li id='004002001'>Install reflectors</li>
-		<li id='004002002'>other (please specify)</li>
+		<li id='004002001'>{% trans 'Install reflectors'%}</li>
+		<li id='004002002'>{% trans 'other (please specify)'%}</li>
 	</ul>
 	</li>
-	<li id='004003'>operational optimization by controls and automation or maintenance
+	<li id='004003'>{% trans 'indoor - operational optimization by controls and automation or maintenance' %}
 	<ul>
-		<li id='004003001'>Maximise use of natural light</li>
-		<li id='004003002'>Clean lamps/luminaires</li>
-		<li id='004003003'>Occupancy sensors</li>
-		<li id='004003004'>Timers</li>
-		<li id='004003005'>Light sensors/dimmers</li>
-		<li id='004003006'>Other lighting controls</li>
-		<li id='004003007'>Clean lamps/luminaires</li>
+		<li id='004003001'>{% trans 'Maximise use of natural light'%}</li>
+		<li id='004003002'>{% trans 'Clean lamps/luminaires'%}</li>
+		<li id='004003003'>{% trans 'Occupancy sensors'%}</li>
+		<li id='004003004'>{% trans 'Timers'%}</li>
+		<li id='004003005'>{% trans 'Light sensors/dimmers'%}</li>
+		<li id='004003006'>{% trans 'Other lighting controls'%}</li>
+		<li id='004003007'>{% trans 'Clean lamps/luminaires'%}</li>
+	</ul>
+	</li>
+    	<li id='004004'>{% trans 'outdoor - relamp'%}
+	<ul>
+		<li id='004004001'>{% trans 'relamp to LED'%}</li>
+		<li id='004004005'>{% trans 'relamp to T5'%}</li>
+		<li id='004004006'>{% trans 'other'%}</li>
+	</ul>
+	</li>
+     <li id='004005'>{% trans 'outdoor - technical optimization by component renewal/supplement/maintenance'%}
+	<ul>
+		<li id='004005001'>{% trans 'Install reflectors'%}</li>
+		<li id='004005002'>{% trans 'other'%}</li>
+	</ul>
+	</li>
+    <li id='004006'>{% trans 'outdoor - operational optimization by controls and automation or maintenance'%}
+	<ul>
+		<li id='004006001'>{% trans 'Maximise use of natural light'%}</li>
+		<li id='004006002'>{% trans 'Clean lamps/luminaires'%}</li>
+		<li id='004006003'>{% trans 'Occupancy sensors'%}</li>
+        <li id='004006004'>{% trans 'Timers'%}</li>
+		<li id='004006005'>{% trans 'Light sensors/dimmers'%}</li>
+		<li id='004006006'>{% trans 'Other lighting controls'%}/li>
+        <li id='004006007'>{% trans 'Clean lamps/luminaires'%}</li>
 	</ul>
 	</li>
 </ul>
 		</li>
-<li id='005'><b>Compressed Air</b>
+<li id='005' data-jstree='{"icon":"/static/img/jstree/compressedair.png"}'>{% trans '<b>Compressed Air</b>'%}
 <ul>
-	<li id='005001'>renewal of compressor</li>
-	<li id='005002'>technical optimization by component renewal/supplement/maintenance</li>
-	<li id='005003'>operational optimization by controls and automation or maintenance</li>
-	<li id='005004'>optimisation of distribution systems</li>
+	<li id='005001'>{% trans 'renewal of compressor'%}</li>
+	<li id='005002'>{% trans 'technical optimization by component renewal/supplement/maintenance'%}</li>
+	<li id='005003'>{% trans 'operational optimization by controls and automation or maintenance'%}</li>
+	<li id='005004'>{% trans 'optimisation of distribution systems'%}</li>
 </ul>
 </li>
-<li id='006'><b>Waste heat (w.o. power generation)</b>
+<li id='006' data-jstree='{"icon":"/static/img/jstree/waste.png"}'>{% trans '<b>Waste heat (w.o. power generation)</b>'%}
 <ul>
-	<li id='006001'>waste heat from processes</li>
-	<li id='006002'>waste heat from cross-cutting technologies
+	<li id='006001'>{% trans 'waste heat from processes'%}</li>
+	<li id='006002'>{% trans 'waste heat from cross-cutting technologies'%}
 	<ul>
-		<li id='006002001'>waste heat from HVAC</li>
-		<li id='006002002'>waste heat from compressors</li>
-		<li id='006002003'>waste heat from chillers</li>
-		<li id='006002004'>other</li>
+		<li id='006002001'>{% trans 'waste heat from HVAC'%}</li>
+		<li id='006002002'>{% trans 'waste heat from compressors'%}</li>
+		<li id='006002003'>{% trans 'waste heat from chillers'%}</li>
+		<li id='006002004'>{% trans 'other'%}</li>
 	</ul>
 	</li>
 </ul>
 </li>
-<li id='007'><b>Power Systems</b>
+         <li id='016' data-jstree='{"icon":"/static/img/jstree/waste.png"}'>{% trans '<b>Waste heat (with power generation)</b>'%}
+    <ul>
+        <li id='016001'>{% trans 'Waste heat (with ORC power generation) - waste heat from processes'%}</li>
+        <li id='016002'>{% trans 'Waste heat (with ORC power generation) - waste heat from cross-cutting technologies'%}
+        <ul>
+            <li id='016002001'>{% trans 'waste heat from HVAC'%}</li>
+            <li id='016002002'>{% trans 'waste heat from compressors'%}</li>
+            <li id='016002003'>{% trans 'waste heat from chillers'%}</li>
+            <li id='016002004'>{% trans 'others'%}</li>
+        </ul>
+        </li>
+        <li id='016003'>{% trans 'Waste heat (with other power generation) - waste heat from processes'%}</li>
+        <li id='016004'>{% trans 'Waste heat (with other power generation) - waste heat from cross-cutting technologies'%}
+        <ul>
+            <li id='016004001'>{% trans 'waste heat from HVAC'%}</li>
+            <li id='016004002'>{% trans 'waste heat from compressors'%}</li>
+            <li id='016004003'>{% trans 'waste heat from chillers'%}</li>
+            <li id='016004004'>{% trans 'others'%}</li>
+        </ul>
+        </li>
+    </ul>
+    </li>
+<li id='007' data-jstree='{"icon":"/static/img/jstree/powersystems.png"}'>{% trans '<b>Power Systems</b>'%}
 <ul>
-	<li id='007001'>technical optimization (component renewal/supplement/maintenance)
+	<li id='007001'>{% trans 'technical optimization (component renewal/supplement/maintenance)'%}
 	<ul>
-		<li id='007001001'>Voltge optimisation</li>
-		<li id='007001002'>Reduce Power System Losses</li>
-		<li id='007001003'>Power Factor correction</li>
-		<li id='007001004'>Install Energy-Efficient Transformers</li>
+		<li id='007001001'>{% trans 'Voltge optimisation'%}</li>
+		<li id='007001002'>{% trans 'Reduce Power System Losses'%}</li>
+		<li id='007001003'>{% trans 'Power Factor correction'%}</li>
+		<li id='007001004'>{% trans 'Install Energy-Efficient Transformers'%}</li>
 	</ul>
 	</li>
-	<li id='007002'>operational optimization (controls and automation)</li>
-	<li id='007003'>complete renewal</li>
-	<li id='007004'>other</li>
+	<li id='007002'>{% trans 'operational optimization (controls and automation)'%}</li>
+	<li id='007003'>{% trans 'complete renewal'%}</li>
+	<li id='007004'>{% trans 'other'%}</li>
 </ul>
 </li>
-<li id='008'><b>Refrigeration</b>
+<li id='008' data-jstree='{"icon":"/static/img/jstree/refrigeration.png"}'>{% trans '<b>Refrigeration</b>'%}
 <ul>
-	<li id='008001'>technical optimization (component renewal/supplement/maintenance)
+	<li id='008001'>{% trans 'technical optimization (component renewal/supplement/maintenance)'%}
 	<ul>
-		<li id='008001001'>Install Floating-Head Pressure Control</li>
-		<li id='008001002'>Reduce Refrigeration System Losses</li>
-		<li id='008001003'>Install Refrigerated Space Doors or Curtains</li>
-		<li id='008001004'>Increase Insulation of Refrigerated Area</li>
-		<li id='008001005'>Improve Refrigeration System Efficiency</li>
-		<li id='008001006'>Improve Compressors/Controls</li>
+		<li id='008001001'>{% trans 'Install Floating-Head Pressure Control'%}</li>
+		<li id='008001002'>{% trans 'Reduce Refrigeration System Losses'%}</li>
+		<li id='008001003'>{% trans 'Install Refrigerated Space Doors or Curtains'%}</li>
+		<li id='008001004'>{% trans 'Increase Insulation of Refrigerated Area'%}</li>
+		<li id='008001005'>{% trans 'Improve Refrigeration System Efficiency'%}</li>
+		<li id='008001006'>{% trans 'Improve Compressors/Controls'%}</li>
 	</ul>
 	</li>
-	<li id='008002'>operational optimization (controls and automation)
+	<li id='008002'>{% trans 'operational optimization (controls and automation)'%}
 	<ul>
-		<li id='008002001'>Improve Controls</li>
-		<li id='008002002'>Optimize Defrost Cycle Control</li>
-		<li id='008002003'>Optimize Condensing Unit Capacity Control</li>
+		<li id='008002001'>{% trans 'Improve Controls'%}</li>
+		<li id='008002002'>{% trans 'Optimize Defrost Cycle Control'%}</li>
+		<li id='008002003'>{% trans 'Optimize Condensing Unit Capacity Control'%}</li>
 	</ul>
 	</li>
-	<li id='008003'>complete renewal</li>
-	<li id='008004'>other</li>
+	<li id='008003'>{% trans 'complete renewal'%}</li>
+	<li id='008004'>{% trans 'other'%}</li>
 </ul>
 </li>
-<li id='009'><b>Motors</b>
+<li id='009' data-jstree='{"icon":"/static/img/jstree/motors.png"}'>{% trans '<b>Motors</b>'%}
 <ul>
-	<li id='009001'>operational optimization (controls and automation)
+	<li id='009001'>{% trans 'operational optimization (controls and automation)'%}
 	<ul>
-		<li id='009001001'>Reduce stand-by operation</li>
-		<li id='009001002'>other</li>
+		<li id='009001001'>{% trans 'Reduce stand-by operation'%}</li>
+		<li id='009001002'>{% trans 'other'%}</li>
 	</ul>
 	</li>
-	<li id='009002'>technical optimization (component renewal/supplement/maintenance)
+	<li id='009002'>{% trans 'technical optimization (component renewal/supplement/maintenance)'%}
 	<ul>
-		<li id='009002001'>Optimize Motor Sizing</li>
-		<li id='009002002'>Reduce Peak Power Demand</li>
-		<li id='009002003'>Variable-Speed Motors/Drives</li>
+		<li id='009002001'>{% trans 'Optimize Motor Sizing'%}</li>
+		<li id='009002002'>{% trans 'Reduce Peak Power Demand'%}</li>
+		<li id='009002003'>{% trans 'Variable-Speed Motors/Drives'%}</li>
 	</ul>
 	</li>
-	<li id='009003'>complete renewal</li>
+	<li id='009003'>{% trans 'complete renewal'%}</li>
 </ul>
 </li>
 
-<li id='010'><b>Pumps</b>
+<li id='010' data-jstree='{"icon":"/static/img/jstree/pumps.png"}'>{% trans '<b>Pumps</b>'%}
 <ul>
-	<li id='010001'>operational optimization (controls and automation)
+	<li id='010001'>{% trans 'operational optimization (controls and automation)'%}
 	<ul>
-		<li id='010001001'>Reduce stand-by operation</li>
-		<li id='010001002'>other</li>
+		<li id='010001001'>{% trans 'Reduce stand-by operation'%}</li>
+		<li id='010001002'>{% trans 'other'%}</li>
 	</ul>
 	</li>
-	<li id='010002'>technical optimization (component renewal/supplement/maintenance)
+	<li id='010002'>{% trans 'technical optimization (component renewal/supplement/maintenance)'%}
 	<ul>
-		<li id='010002001'>Optimize Pump Sizing</li>
-		<li id='010002002'>Reduce Peak Power Demand</li>
-		<li id='010002003'>Variable-Speed Motors/Drives</li>
-		<li id='010002004'>other</li>
+		<li id='010002001'>{% trans 'Optimize Pump Sizing'%}</li>
+		<li id='010002002'>{% trans 'Reduce Peak Power Demand'%}</li>
+		<li id='010002003'>{% trans 'Variable-Speed Motors/Drives'%}</li>
+		<li id='010002004'>{% trans 'other'%}</li>
 	</ul>
 	</li>
-	<li id='010003'>optimisation of distribution systems
+	<li id='010003'>{% trans 'optimisation of distribution systems'%}
   <ul>
-		<li id='010003001'>hydraulic optimisation</li>
-		<li id='010003002'>other</li>
+		<li id='010003001'>{% trans 'hydraulic optimisation'%}</li>
+		<li id='010003002'>{% trans 'other'%}</li>
 	</ul>
 	</li>
-	<li id='010004'>complete renewal</li>
+	<li id='010004'>{% trans 'complete renewal'%}</li>
 </ul>
 </li>
-<li id='011'><b>Other</b></li>
+<li id='011' data-jstree='{"icon":"/static/img/jstree/other.png"}'>{% trans '<b>Other</b>'%}</li>
 
-<li id='012'><b>Building Fabric Measures</b>
+<li id='012' data-jstree='{"icon":"/static/img/jstree/buildingfabric.png"}'>{% trans '<b>Building Fabric Measures</b>'%}
 <ul>
-	<li id='012001'>Walls
+	<li id='012001'>{% trans 'Walls'%}
 	<ul>
-		<li id='012001001'>external wall insulation</li>
-		<li id='012001002'>cavity wall insulation</li>
-		<li id='012001003'>internal wall insulation</li>
-		<li id='012001004'>other</li>
+		<li id='012001001'>{% trans 'external wall insulation'%}</li>
+		<li id='012001002'>{% trans 'cavity wall insulation'%}</li>
+		<li id='012001003'>{% trans 'internal wall insulation'%}</li>
+		<li id='012001004'>{% trans 'other'%}</li>
 	</ul>
 	</li>
-	<li id='012002'>Roof
+	<li id='012002'>{% trans 'Roof'%}
 	<ul>
-		<li id='012002001'>loft insulation of ceiling</li>
-		<li id='012002002'>pitched roof insulation</li>
-		<li id='012002003'>flat roof insulation</li>
-		<li id='012002004'>reflective roof coating</li>
-		<li id='012002005'>green roof</li>
-		<li id='012002006'>other</li>
+		<li id='012002001'>{% trans 'loft insulation of ceiling'%}</li>
+		<li id='012002002'>{% trans 'pitched roof insulation'%}</li>
+		<li id='012002003'>{% trans 'flat roof insulation'%}</li>
+		<li id='012002004'>{% trans 'reflective roof coating'%}</li>
+		<li id='012002005'>{% trans 'green roof'%}</li>
+		<li id='012002006'>{% trans 'other'%}</li>
 	</ul>
 	</li>
-	<li id='012003'>Floor
+	<li id='012003'>{% trans 'Floor'%}
 	<ul>
-		<li id='012003001'>suspended floor</li>
-		<li id='012003002'>solid floor</li>
-		<li id='012003003'>other</li>
+		<li id='012003001'>{% trans 'suspended floor'%}</li>
+		<li id='012003002'>{% trans 'solid floor'%}</li>
+		<li id='012003003'>{% trans 'other'%}</li>
 	</ul>
 	</li>
-	<li id='012004'>Glazing
+	<li id='012004'>{% trans 'Glazing' %}
 	<ul>
-		<li id='012004001'>Windows</li>
-		<li id='012004002'>Doors</li>
-		<li id='012004003'>Skylights</li>
-		<li id='012004004'>tinted or reflective coating</li>
-		<li id='012004005'>other</li>
+		<li id='012004001'>{% trans 'Windows'%}</li>
+		<li id='012004002'>{% trans 'Doors'%}</li>
+		<li id='012004003'>{% trans 'Skylights'%}</li>
+		<li id='012004004'>{% trans 'tinted or reflective coating'%}</li>
+		<li id='012004005'>{% trans 'other'%}</li>
 	</ul>
 	</li>
-	<li id='012005'>Air infiltration
+	<li id='012005'>{% trans 'Air infiltration'%}
 	<ul>
-		<li id='012005001'>draughtproofing</li>
-		<li id='012005002'>air curtains</li>
-		<li id='012005003'>other</li>
+		<li id='012005001'>{% trans 'draughtproofing'%}</li>
+		<li id='012005002'>{% trans 'air curtains'%}</li>
+		<li id='012005003'>{% trans 'other'%}</li>
 	</ul>
 	</li>
-	<li id='012006'>Shading
+	<li id='012006'>{% trans 'Shading'%}
 	<ul>
-		<li id='012006001'>external  </li>
-		<li id='012006002'>internal wall insulation</li>
-		<li id='012006003'>other</li>
+		<li id='012006001'>{% trans 'external'%}  </li>
+		<li id='012006002'>{% trans 'internal wall insulation'%}</li>
+		<li id='012006003'>{% trans 'other'%}</li>
 	</ul>
 	</li>
 </ul>
 </li>
-<li id='013'><b>HVAC Plant</b>
+<li id='013' data-jstree='{"icon":"/static/img/jstree/hvac.png"}'>{% trans '<b>HVAC (Space and Water) Heating, Ventilation and Air Conditioning</b>'%}
 <ul>
-	<li id='013001'>Boiler/furnace
+	<li id='013001'>{% trans 'Boiler/furnace'%}
 	<ul>
-		<li id='013001001'>boiler replacement</li>
-		<li id='013001002'>boiler upgrade</li>
-		<li id='013001003'>conversion of fuel source</li>
-		<li id='013001004'>other</li>
+		<li id='013001001'>{% trans 'boiler replacement'%}</li>
+		<li id='013001002'>{% trans 'boiler upgrade'%}</li>
+		<li id='013001003'>{% trans 'conversion of fuel source'%}</li>
+		<li id='013001004'>{% trans 'other'%}</li>
 	</ul>
 	</li>
-	<li id='013002'>Chiller plant
+	<li id='013002'>{% trans 'Chiller plant'%}
 	<ul>
-		<li id='013002001'>chiller replacement</li>
-		<li id='013002002'>chiller upgrade</li>
-		<li id='013002003'>evaporative cooling</li>
-		<li id='013002004'>other</li>
+		<li id='013002001'>{% trans 'chiller replacement'%}</li>
+		<li id='013002002'>{% trans 'chiller upgrade'%}</li>
+		<li id='013002003'>{% trans 'evaporative cooling'%}</li>
+		<li id='013002004'>{% trans 'other'%}</li>
 	</ul>
 	</li>
-	<li id='013003'>Pipework
+	<li id='013003'>{% trans 'Pipework'%}
 	<ul>
-		<li id='013003001'>pipe insulation</li>
-		<li id='013003002'>improved pumps</li>
-		<li id='013003003'>other</li>
+		<li id='013003001'>{% trans 'pipe insulation'%}</li>
+		<li id='013003002'>{% trans 'improved pumps'%}</li>
+		<li id='013003003'>{% trans 'other'%}</li>
 	</ul>
 	</li>
-	<li id='013004'>Ventilation
+	<li id='013004'>{% trans 'Ventilation'%}
 	<ul>
-		<li id='013004001'>Duct insulation  </li>
-		<li id='013004002'>Heat recovery</li>
-		<li id='013004003'>Variable speed drives</li>
-		<li id='013004004'>Reduce Ventilation Loads</li>
-		<li id='013004005'>Improved motors/fans</li>
-		<li id='013004006'>other (please specify)</li>
+		<li id='013004001'>{% trans 'Duct insulation  '%}</li>
+		<li id='013004002'>{% trans 'Heat recovery'%}</li>
+		<li id='013004003'>{% trans 'Variable speed drives'%}</li>
+		<li id='013004004'>{% trans 'Reduce Ventilation Loads'%}</li>
+		<li id='013004005'>{% trans 'Improved motors/fans'%}</li>
+		<li id='013004006'>{% trans 'other (please specify)'%}</li>
 	</ul>
 	</li>
-	<li id='013005'>Controls
+	<li id='013005'>{% trans 'Controls'%}
 	<ul>
-		<li id='013005001'>Install/replace BEMS</li>
-		<li id='013005002'>optimise stop/start</li>
-		<li id='013005003'>time controls</li>
-		<li id='013005004'>thermostatic valves</li>
-		<li id='013005005'>other (please specify)</li>
+		<li id='013005001'>{% trans 'Install/replace BEMS'%}</li>
+		<li id='013005002'>{% trans 'optimise stop/start'%}</li>
+		<li id='013005003'>{% trans 'time controls'%}</li>
+		<li id='013005004'>{% trans 'thermostatic valves'%}</li>
+		<li id='013005005'>{% trans 'other (please specify)'%}</li>
 	</ul>
 	</li>
-	<li id='013006'>Water heating
+	<li id='013006'>{% trans 'Drinking/Tap Water heating'%}
 	<ul>
-		<li id='013006001'>water saving devices to hot taps/showers</li>
-		<li id='013006002'>other</li>
+		<li id='013006001'>{% trans 'Drinking/Tap water saving devices to hot taps/showers'%}</li>
+		<li id='013006002'>{% trans 'other'%}</li>
 	</ul>
+	</li>
+    	<li id='013007'>{% trans 'District Heating supply'%}
 	</li>
 </ul>
 </li>
+    <li id='014' data-jstree='{"icon":"/static/img/jstree/behavior.png"}'>{% trans '<b>Information and Communication Technologies (ICT)</b>'%}
+<ul>
+	<li id='014001'>{% trans 'ICT - Servers'%}
+	<ul>
+		<li id='014001001'>{% trans 'Free Cooling'%}</li>
+		<li id='014001002'>{% trans 'Server Virtualisation'%}</li>
+		<li id='014001003'>{% trans 'Technological Upgrade'%}</li>
+		<li id='014001004'>{% trans 'Other'%}</li>
+	</ul>
+	</li>
+	<li id='014002'>{% trans 'ICT - Infrastructure'%}
+	</li>
+	<li id='014003'>{% trans 'ICT - Desktop Computers'%}
+	<ul>
+		<li id='014003001'>{% trans 'Power Management'%}</li>
+		<li id='014003002'>{% trans 'Replacement of Desktop with Laptop Computers'%}</li>
+	</ul>
+	</li>
+</ul>
+     <li id='015' data-jstree='{"icon":"/static/img/jstree/hvac.png"}'>{% trans '<b>Metering, Monitoring and Energy Management</b>'%}
+    </li>
+
  </ul>

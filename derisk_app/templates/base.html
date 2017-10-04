@@ -1,5 +1,6 @@
 {% load i18n %}
 {% load account socialaccount %}
+{% load cookielaw_tags %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,16 +11,17 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>{% block title %}Energy Efficiency De-risking Platform{% endblock %}</title>
+    <title>{% block title %}De-risking Energy Efficiency Platform (DEEP){% endblock %}</title>
      {% block css %}{% endblock %}
     <!-- PACE LOAD BAR PLUGIN - This creates the subtle load bar effect at the top of the page. -->
     <link href="/static/css/plugins/pace/pace.css" rel="stylesheet">
     <script src="/static/js/plugins/pace/pace.js"></script>
 
+<link href="/static/cookielaw/css/cookielaw.css" rel="stylesheet">
     <!-- GLOBAL STYLES - Include these on every page. -->
     <link href="/static/css/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href='http://fonts.googleapis.com/css?family=Ubuntu:300,400,500,700,300italic,400italic,500italic,700italic' rel="stylesheet" type="text/css">
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Ubuntu:300,400,500,700,300italic,400italic,500italic,700italic' rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel="stylesheet" type="text/css">
     <!--link href="/static/icons/font-awesome//static/css/font-awesome.min.css" rel="stylesheet"-->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
 
@@ -44,6 +46,7 @@
       <script src="/static/js/respond.min.js"></script>
     <![endif]-->
 
+    <link rel="shortcut icon" href="/static/favicon.ico"/>
 </head>
 
 <body class="{% block bodyclass %}home{% endblock %}">
@@ -84,26 +87,54 @@
 
 
                     <!-- begin USER ACTIONS DROPDOWN -->
+                    <li class="dropdown header-menu-item">
+                        <a href="/static/pdf/DEEPUserGuideV1.pdf"> {% trans 'User Guide' %}</a>
+                    </li>
+                    <li class="dropdown header-menu-item">
+                        <a href="/becomedataprovider"> {% trans 'Become a Data Provider' %}</a>
+                    </li>
+                    <li class="dropdown header-menu-item">
+                        <a href="/privacyterms"> {% trans 'Data Privacy Terms' %}</a>
+                    </li>
+                     <li class="dropdown header-menu-item">
+                        <a href="/termsuse"> {% trans 'Database Terms of Use' %}</a>
+                    </li>
+
+                        <li class="dropdown header-menu-item">
+                        <form action="{% url 'set_language' %}" method="post">{% csrf_token %}
+                        <input name="next" type="hidden" value="{{ redirect_to }}" />
+                        <select id="languagepicker" name="language" class="changelanguage_top_bar" onchange="this.form.submit()">
+                            {% get_current_language as LANGUAGE_CODE %}
+                            {% get_available_languages as LANGUAGES %}
+                            {% get_language_info_list for LANGUAGES as languages %}
+                            {% for language in languages %}
+                                <option value="{{ language.code }}"{% if language.code == LANGUAGE_CODE %} selected{% endif %}>
+                                    {{ language.name_local }} ({{ language.code }})
+                                </option>
+                            {% endfor %}
+                        </select>
+                        <!-- <i class="fa fa-caret-down" style="color:#9aa4ac" onclick=" $('#languagepicker' ).select();"></i> -->
+                        <i class="fa fa-caret-down" style="color:#9aa4ac" onclick=" $('#languagepicker' ).select();"></i>
+                        <input type="submit" value="Go" style="display:none" />
+                    </form>
+
+                        <!-- /.dropdown-menu -->
+                    </li>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                             <i class="fa fa-user"></i>  <i class="fa fa-caret-down"></i>
                         </a>
                         <ul class="dropdown-menu dropdown-user">
                             <li>
-                                <a href="profile.html">
-                                    <i class="fa fa-user"></i> My Profile
+                                <a href="{% url 'profile-edit' user.profile.id %}">
+                                    <i class="fa fa-user"></i> {% trans 'My Profile' %}
                                 </a>
                             </li>
 
                             <li class="divider"></li>
                             <li>
-                                <a href="#">
-                                    <i class="fa fa-gear"></i> Settings
-                                </a>
-                            </li>
-                            <li>
                                 <a class="logout_open" href="#logout">
-                                    <i class="fa fa-sign-out"></i> Logout
+                                    <i class="fa fa-sign-out"></i> {% trans 'Logout' %}
                                     <strong>{{user.username}}</strong>
                                 </a>
                             </li>
@@ -130,7 +161,7 @@
                     <!-- begin SIDE NAV USER PANEL -->
                     <li class="side-user hidden-xs">
                         <p class="welcome">
-                            <i class="fa fa-key"></i> Logged in as
+                            <i class="fa fa-key"></i> {% trans 'Logged in as' %}
                         </p>
                         <p class="name tooltip-sidebar-logout">
                             <span class="last-name">{{user.username}}</span> <a style="color: inherit" class="logout_open" href="#logout" data-toggle="tooltip" data-placement="top" title="Logout"><i class="fa fa-sign-out"></i></a>
@@ -151,29 +182,35 @@
                     <!-- begin DASHBOARD LINK -->
                     <li>
                         <a class="{% block overviewmenu %}{% endblock %}" href="{% url 'overview' %}">
-                            <i class="fa fa-archive"></i> Overview
+                            <i class="fa fa-home"></i> {% trans 'Key figures' %}
+                        </a>
+                    </li>
+                    <li>
+                        <a class="{% block factsheetmenuquick %}{% endblock %}" href="{% url 'factsheet-quick' %}">
+                            <i class="fa fa-tasks"></i> {% trans 'Data overview' %}
+                        </a>
+                    </li>
+                    <li>
+                        <a class="{% block factsheetmenu %}{% endblock %}" href="{% url 'factsheet-buildings' %}">
+                            <i class="fa fa-tasks"></i> {% trans 'View charts' %}
                         </a>
                     </li>
                     <li>
                         <a class="{% block manageprojectsmenu %}{% endblock %}" href="{% url 'project-list' %}">
-                            <i class="fa fa-building-o"></i> Manage Projects
+                            <i class="fa fa-building-o"></i> {% trans 'Add and Manage Projects' %}
                         </a>
                     </li>
                     <li>
-                        <a class="{% block analysismenu %}{% endblock %}" href="index.html">
-                            <i class="fa fa-bar-chart-o"></i> Analysis
+                        <a class="{% block analysismenu %}{% endblock %}" href="{% url 'toolbox-all' %}">
+                            <i class="fa fa-bar-chart-o"></i> {% trans 'Analysis Toolbox' %}
                         </a>
                     </li>
                     <li>
-                        <a class="{% block benchmarkingmenu %}{% endblock %}" href="index.html">
-                            <i class="fa fa-line-chart"></i> Benchmarking
+                        <a class="{% block benchmarkingmenu %}{% endblock %}" href="{% url 'benchmark' %}">
+                            <i class="fa fa-line-chart"></i> {% trans 'Benchmark your Projects' %}
                         </a>
                     </li>
-                    <li>
-                        <a class="{% block searchanddumpmenu %}{% endblock %}" href="index.html">
-                            <i class="fa fa-search"></i> Search and Data dump
-                        </a>
-                    </li>
+
                     <!-- end DASHBOARD LINK -->
                 </ul>
                 <!-- /.side-nav -->
@@ -187,6 +224,7 @@
         <div id="page-wrapper">
 
             <div class="page-content">
+            {% cookielaw_banner %}
 			{% block content %}
             {% endblock %}
             </div>
@@ -198,7 +236,7 @@
     <!-- /#wrapper -->
 
     <!-- GLOBAL SCRIPTS -->
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <script src="/static/js/plugins/bootstrap/bootstrap.min.js"></script>
     <script src="/static/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
     <script src="/static/js/plugins/popupoverlay/jquery.popupoverlay.js"></script>
@@ -208,9 +246,9 @@
         <div class="logout-message">
             <img class="img-circle img-logout" src="/static/img/profile-pic.png" alt="">
             <h3>
-                <i class="fa fa-sign-out text-green"></i> Ready to go?
+                <i class="fa fa-sign-out text-logo-blue"></i> {% trans 'Ready to go?' %}
             </h3>
-            <p>Select "Logout" below if you are ready<br> to end your current session.</p>
+            <p>{% trans 'Select "Logout" below if you are ready<br> to end your current session.' %}</p>
             <ul class="list-inline">
                 <li>
 				<form method="post" action="{% url 'account_logout' %}">
@@ -218,16 +256,20 @@
 				  {% if redirect_field_value %}
 				  <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>
 				  {% endif %}
-				  <button class="btn btn-green" type="submit"><strong>{% trans 'Logout' %}</strong></button>
+				  <button class="btn btn-logo-blue" type="submit"><strong>{% trans 'Logout' %}</strong></button>
 				</form>
 
                 </li>
                 <li>
-                    <button class="logout_close btn btn-green">Cancel</button>
+                    <button class="logout_close btn btn-logo-blue">{% trans 'Cancel</button>' %}</button>
                 </li>
             </ul>
         </div>
     </div>
+
+    <!-- i18n -->
+    <script type="text/javascript" src="{% url 'javascript-catalog' %}"></script>
+
     <!-- /#logout -->
 	{% block scripts %}{% endblock %}
     <!-- Logout Notification jQuery -->
@@ -236,12 +278,21 @@
     <script src="/static/js/plugins/hisrc/hisrc.js"></script>
 
     <!-- PAGE LEVEL PLUGIN SCRIPTS -->
- 
+ <script src="/static/cookielaw/js/cookielaw.js"></script>
 
     <!-- THEME SCRIPTS -->
     <script src="/static/js/flex.js"></script>
     <!--script src="/static/js/demo/dashboard-demo.js"></script-->
+        <script>
+          (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+          })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
+          ga('create', 'UA-87688222-1', 'auto');
+          ga('send', 'pageview');
+
+        </script>
 </body>
 
 </html>

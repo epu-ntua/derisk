@@ -3,19 +3,53 @@
 {% load i18n %}
 
 {% block head_title %}{% trans "Signup" %}{% endblock %}
-
 {% block content %}
-<h1>{% trans "Sign Up" %}</h1>
+            <div class="col-md-4 col-md-offset-4">
+                <div class="login-banner text-center">
+                    <h1><img src="/static/img/logo_login.png"></img></h1>
+                </div>
+                <div class="portlet portlet-green">
+                    <div class="portlet-heading login-heading">
+                        <div class="portlet-title">
+                            <h4><strong><i class="fa fa-sign-in"></i>&nbsp{% trans "Sign Up" %}</strong>
+                            </h4>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="portlet-body">
+					<p>{% blocktrans %}Already have an account? Then please <a href="{{ login_url }}">sign in</a>.{% endblocktrans %}</p>
+					<form class="signup" id="signup_form" method="post" action="{% url 'account_signup' %}">
+					  {% csrf_token %}
+					  <span class="error">{{ form.non_field_errors }}{{ form.errors }}</span>
+                        <div >
+                            <span class="">{%trans "E-mail:" %}</span>
+						    <span class="error">{{ form.email.errors }}</span>
+                            <input id="user_email" class="form-control" type="email" name="email" value='{{form.email.value|default_if_none:""}}'>
+                        </div>
+                        <div class="signup-fields">
+                            <span class="error">{{ form.password1.errors }}</span>
+                            <span class="">{%trans "Password" %}:</span>
+                            <input id="user_password1" class="form-control" type="password" name="password1"
+                                   required="required"/>
+                        </div>
+                        <div class="signup-fields">
+                            <span class="error">{{ form.password2.errors }}</span>
+                            <span class="">{%trans "Password (again)" %}:</span>
+                            <input id="user_password2" class="form-control" type="password" name="password2"
+                                   required="required">
+                            {{ form.captcha }} {{ form.captcha.errors }}
 
-<p>{% blocktrans %}Already have an account? Then please <a href="{{ login_url }}">sign in</a>.{% endblocktrans %}</p>
+                        </div>
+                    {% if redirect_field_value %}
+                    <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>
+                    {% endif %}
 
-<form class="signup" id="signup_form" method="post" action="{% url 'account_signup' %}">
-  {% csrf_token %}
-  {{ form.as_p }}
-  {% if redirect_field_value %}
-  <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
-  {% endif %}
-  <button type="submit">{% trans "Sign Up" %} &raquo;</button>
-</form>
-
+                    <button class="btn-signup btn btn-lg btn-logo-blue btn-block" type="submit">{% trans "Sign Up" %} &raquo;</button>
+	                            <p class="small">
+                                By signing up you agree to the DEEP platform <a style="text-decoration:underline;" href="/static/pdf/DatabaseTermsofUse.pdf">terms of usage.</a>
+                            </p>
+					</form>
+                    </div>
+                </div>
+            </div>
 {% endblock %}

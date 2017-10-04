@@ -1,3 +1,4 @@
+{% load i18n %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,9 +16,9 @@
     <link rel="stylesheet" href="/static/homepage/css/bootstrap.min.css" type="text/css">
 
     <!-- Custom Fonts -->
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
 	<link href='https://fonts.googleapis.com/css?family=Lato:400,300,100,700,900,900italic,400italic,300italic,100italic,700italic&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
-    <link href='http://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="/static/homepage/font-awesome/css/font-awesome.min.css" type="text/css">
 
     <!-- Plugin CSS -->
@@ -33,6 +34,7 @@
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
+    <link rel="shortcut icon" href="/static/favicon.ico"/>
 </head>
 
 <body id="page-top">
@@ -54,13 +56,32 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
                     <li>
-                        <a class="page-scroll" href="#about">About the Project</a>
+                        <a class="page-scroll" href="http://eefig.eu/index.php/about-the-project" target="_blank">{% trans 'About the Project' %}</a>
+                    </li>
+
+                    <li>
+                        <a class="page-scroll" href="/accounts/login">{% trans 'Sign in' %}</a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="/accounts/login">Sign in</a>
+                        <a class="page-scroll" href="#contact">{% trans 'Contact' %}</a>
                     </li>
-                    <li>
-                        <a class="page-scroll" href="#contact">Contact</a>
+                       <li>
+                        <form action="{% url 'set_language' %}" method="post">{% csrf_token %}
+                        <input name="next" type="hidden" value="{{ redirect_to }}" />
+                        <select id="languagepickerfront" name="language" class="changelanguage_top_bar" onchange="this.form.submit()">
+                            {% get_current_language as LANGUAGE_CODE %}
+                            {% get_available_languages as LANGUAGES %}
+                            {% get_language_info_list for LANGUAGES as languages %}
+                            {% for language in languages %}
+                                <option value="{{ language.code }}"{% if language.code == LANGUAGE_CODE %} selected{% endif %}>
+                                    {{ language.name_local }} ({{ language.code }})
+                                </option>
+                            {% endfor %}
+                        </select>
+                        <!-- <i class="fa fa-caret-down" style="color:#9aa4ac" onclick=" $('#languagepicker' ).select();"></i> -->
+                        <i class="fa fa-caret-down" style="color:#BFC6CC;margin-right:30px;" onclick=" $('#languagepicker' ).select();"></i>
+                        <input type="submit" value="Go" style="display:none" />
+                    </form>
                     </li>
                 </ul>
             </div>
@@ -72,13 +93,13 @@
     <header>
         <div class="header-content">
             <div class="header-content-inner">
-			    <img src="/static/homepage/img/final_logo_big.png"/>
-                <h1 style="font-size: 55px !important;">De-risking Energy </h1>
-                <h1 style="font-size: 55px !important;">Efficiency Platform</h1>
-				<h1 style="font-size: 55px !important;">(DEEP) </h1>
+			    <img src="/static/homepage/img/logo_2.png"/>
+                <h1 style="font-size: 45px !important;">{% trans 'De-risking Energy' %} </h1>
+                <h1 style="font-size: 45px !important;">{% trans 'Efficiency Platform' %}</h1>
+				<h1 style="font-size: 45px !important;">{% trans '(DEEP)' %} </h1>
                 <hr>
-                <p>An open source database for energy efficiency investments performance monitoring and benchmarking as well as for the support of the underwriting process</p>
-                <a href="#about" class="btn btn-primary btn-xl page-scroll">Find Out More</a>
+                <p style="font-size:30px;">{% trans 'An open-source initiative to up-scale energy efficiency investments in Europe through the improved sharing and transparent analysis of existing projects in Buildings and Industry' %} </p>
+                <a href="/accounts/login" class="btn btn-primary btn-xl page-scroll">{% trans 'Get Started!' %} </a>
             </div>
         </div>
     </header>
@@ -87,10 +108,10 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 text-center">
-                    <h2 class="section-heading">Our Vision</h2>
+                    <h2 class="section-heading">{% trans 'Our Vision' %} </h2>
                     <hr class="light">
-                    <p class="text-faded" style="font-size:20px">Provide detailed analysis and evidence on the performance of energy efficiency investments to support the assessment of the benefits and financial risks</p>
-                    <a href="#" class="btn btn-default btn-xl">Get Started!</a>
+                    <p class="text-faded" style="font-size:26px">{% trans 'Provide detailed analysis and evidence on the performance of energy efficiency investments to support the assessment of the benefits and financial risks' %}</p>
+                    <a href="http://eefig.eu/index.php/about-the-project" target="_blank"  class="btn btn-default btn-xl">{% trans 'Find Out More' %}</a>
                 </div>
             </div>
         </div>
@@ -100,7 +121,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center" style="padding-bottom:25px">
-                    <h2 class="section-heading">Get Involved!</h2>
+                    <h2 class="section-heading">{% trans 'Get Involved!' %}</h2>
                     <hr class="primary">
                 </div>
             </div>
@@ -110,13 +131,13 @@
                 <div class="col-lg-6 col-md-12 text-center">
                     <div class="service-box">
                         <img src="/static/homepage/img/user.png" class="wow bounceIn text-primary"></img>
-                        <h3>Become a user</h3>
+                        <h3>{% trans 'Become a user' %}</h3>
                         <p class="text-muted">
 						<ul class="text-justify fa-ul text-muted" style="font-size:18px">
-    <li><i class="fa-li fa fa-check"></i>Enhance your understanding of and access to energy efficiency finance related business opportunities</li>
-    <li><i class="fa-li fa fa-check"></i>Streamline underwritng procedures through the development and use of a common language for energy efficiency underwriting</li>
-    <li><i class="fa-li fa fa-check"></i>Decrease due diligence and transaction costs</li>
-    <li><i class="fa-li fa fa-check"></i>Better risks assessment through high quality and credible data framework </li>
+                    <li><i class="fa-li fa fa-check"></i>{% trans 'Enhance your understanding of and access to energy efficiency finance related business opportunities' %}</li>
+                    <li><i class="fa-li fa fa-check"></i>{% trans 'Streamline underwriting procedures through the development and use of a common language for energy efficiency underwriting' %}</li>
+                    <li><i class="fa-li fa fa-check"></i>{% trans 'Decrease due diligence and transaction costs' %}</li>
+                    <li><i class="fa-li fa fa-check"></i>{% trans 'Better risk assessment through high quality and credible data framework' %} </li>
 </ul>
 						</p>
                     </div>
@@ -124,21 +145,21 @@
                 <div class="col-lg-6 col-md-12 text-center">
                     <div class="service-box">
                         <img src="/static/homepage/img/dataprovider.png" class="wow bounceIn text-primary" data-wow-delay=".1s"></img>
-                        <h3>Become a data provider</h3>
+                        <h3>{% trans 'Become a data provider' %}</h3>
                         <p class="text-muted">
 						<ul class="text-justify fa-ul text-muted" style="font-size:18px">
-    <li><i class="fa-li fa fa-check"></i>Contribute to creating of European evidence base which is key to "get the EE policy and market story right"</li>
-    <li><i class="fa-li fa fa-check"></i>Acknowledgement and visibility as data contributor</li>
-    <li><i class="fa-li fa fa-check"></i>Benchmarking your project performance versus others</li>
-    <li><i class="fa-li fa fa-check"></i>Connect your data to investors</li>
-	    <li><i class="fa-li fa fa-check"></i>Influence the industry best practice</li>
+                        <li><i class="fa-li fa fa-check"></i>{% trans 'Contribute to creating of European evidence base which is key to "get the EE policy and market story right"' %}</li>
+                        <li><i class="fa-li fa fa-check"></i>{% trans 'Acknowledgement and visibility as data contributor' %}</li>
+                        <li><i class="fa-li fa fa-check"></i>{% trans 'Benchmarking your project performance versus others' %}</li>
+                        <li><i class="fa-li fa fa-check"></i>{% trans 'Connect your data to investors' %}</li>
+                            <li><i class="fa-li fa fa-check"></i>{% trans 'Influence the industry best practice' %}</li>
 </ul>
 						</p>
                     </div>
                 </div>
             </div>
 			<div class="row text-center" style="margin-top:30px">
-			 <a class="btn btn-primary btn-xl page-scroll">Sign me up</a>
+			 <a href="/accounts/signup/" class="btn btn-primary btn-xl page-scroll">{% trans 'Sign me up' %}</a>
 			</div>
         </div>
     </section>
@@ -146,15 +167,55 @@
     <aside class="bg-dark">
         <div class="container text-center">
             <div class="call-to-action">
-                <h2 style="margin-bottom:50px;">I want to stay informed about the platform updates</h2>
-                <input placeholder="Email me for any platform news" id="btn-subscribe"></input>
-				<a href="#" style="border: 0 none;float:right; margin-top:18px;margin-right:70px;
-    border-radius: 300px;font-weight: 500;text-transform: uppercase;" class="btn btn-default btn-xl wow tada">Subscribe</a>
+                <h2 style="margin-bottom:5px;">{% trans 'The DEEP team would like to extend special thanks to our initial data providers:' %} </h2>
+                <!--input placeholder="Email me for any platform news" id="btn-subscribe"></input>
+                <a style="border: 0 none;float:right; margin-top:18px;margin-right:70px;
+    border-radius: 300px;font-weight: 500;text-transform: uppercase;" class="btn btn-default btn-xl wow tada"href="mailto:secretary@deep-project.com?Subject=I%20would%20like%20to%20subscribe%20to%20the%20DEEP%20Platform%20email%20list&Body=I%20would%20like%20to%20subscribe%20to%20the%20DEEP%20platform%20email%20list">Subscribe</a-->
             </div>
         </div>
     </aside>
+    <section id="contact" style="padding:0px 0px;">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 text-center">
+                    <img id="myimagemap" src="/static/img/dataproviders.jpg" border="0" width="800" height="461" orgWidth="800" orgHeight="461" usemap="#image-maps-dataproviders" alt="" />
+                    <map name="image-maps-dataproviders" id="image-maps-dataproviders-id">
+                          <area shape="rect" coords="798,459,800,461" alt="Image Map" style="outline:none;" title="Image Map" href="http://www.image-maps.com/index.php?aff=mapped_users_73315" />
+                        <area  alt="" title="EU Smart Cities" href="http://smartcities-infosystem.eu/" shape="poly" coords="13,22,159,31,152,95,16,102" style="outline:none;" target="_self"     />
+                        <area  alt="" title="ESBG" href="http://www.savings-banks.com/" shape="poly" coords="202,190,336,198,332,238,203,242" style="outline:none;" target="_self"     />
+                        <area  alt="" title="eeVS" href="http://www.eevs.co.uk/" shape="poly" coords="175,32,299,33,300,95,166,95" style="outline:none;" target="_self"     />
+                        <area  alt="" title="eeef" href="http://www.eeef.eu/" shape="poly" coords="319,29,430,26,416,96,321,99" style="outline:none;" target="_self"     />
+                        <area  alt="" title="CITYNVEST" href="http://citynvest.eu/" shape="poly" coords="447,29,566,34,583,81,445,92" style="outline:none;" target="_self"     />
+                        <area  alt="" title="eiif" href="http://www.eiif.org/" shape="poly" coords="603,19,679,29,676,101,598,101" style="outline:none;" target="_self"     />
+                        <area  alt="" title="berliner" href="http://www.berliner-e-agentur.de/" shape="poly" coords="693,20,790,33,789,94,696,101" style="outline:none;" target="_self"     />
+                        <area  alt="" title="ekodoma" href="http://www.ekodoma.lv/lv" shape="poly" coords="2,187,191,197,197,239,5,245" style="outline:none;" target="_self"     />
+                        <area  alt="" title="eib" href="http://www.eib.org/" shape="poly" coords="227,111,417,117,423,187,212,183" style="outline:none;" target="_self"     />
+                        <area  alt="" title="BPCE" href="http://www.groupebpce.fr/en" shape="poly" coords="454,116,627,121,627,175,463,186" style="outline:none;" target="_self"     />
+                        <area  alt="" title="jouleassets" href="http://www.jouleassets.com/" shape="poly" coords="637,117,796,120,800,180,647,169" style="outline:none;" target="_self"     />
+                        <area  alt="" title="kredex" href="http://www.kredex.ee/en/" shape="poly" coords="7,250,139,259,134,299,7,304" style="outline:none;" target="_self"     />
+                        <area  alt="" title="energie" href="http://www.effizienznetzwerke.org/" shape="poly" coords="155,253,377,248,359,305,167,305" style="outline:none;" target="_self"     />
+                        <area  alt="" title="The curve" href="http://thecurve.me/" shape="poly" coords="402,210,485,214,494,313,391,313" style="outline:none;" target="_self"     />
+                        <area  alt="" title="BGK" href="https://www.en.bgk.pl/" shape="poly" coords="516,214,619,211,618,297,513,301" style="outline:none;" target="_self"     />
+                        <area  alt="" title="fraunhofer" href="http://www.isi.fraunhofer.de/isi-de/" shape="poly" coords="636,256,793,263,795,309,637,305" style="outline:none;" target="_self"     />
+                        <area  alt="" title="dnvgl" href="https://www.dnvgl.com/" shape="poly" coords="631,187,798,189,794,245,635,239" style="outline:none;" target="_self"     />
+                        <area  alt="" title="Turboden" href="http://www.turboden.eu/en/home/index.php" shape="poly" coords="4,319,148,333,142,380,8,389" style="outline:none;" target="_self"     />
+                        <area  alt="" title="energy efficiency and renewable sources" href="http://www.bgeef.com/display.aspx" shape="poly" coords="181,315,393,335,368,372,186,369" style="outline:none;" target="_self"     />
+                        <area  alt="" title="rockwool" href="http://www.rockwool.com/" shape="poly" coords="387,363,601,363,599,391,384,398" style="outline:none;" target="_self"     />
+                        <area  alt="" title="irees" href="http://www.irees.de/" shape="poly" coords="679,318,792,322,783,386,668,387" style="outline:none;" target="_self"     />
+                        <area  alt="" title="Siemens" href="https://www.siemens.com/" shape="poly" coords="15,405,174,402,165,445,21,456" style="outline:none;" target="_self"     />
+                        <area  alt="" title="Danfoss" href="http://www.danfoss.com/home/" shape="poly" coords="203,379,331,379,317,459,201,453" style="outline:none;" target="_self"     />
+                        <area  alt="" title="MLEI" href="http://www.mleicambs.org.uk/" shape="poly" coords="517,304,667,310,655,356,515,353" style="outline:none;" target="_self"     />
+                        <area  alt="" title="KEA" href="http://www.kea-bw.de/" shape="poly" coords="611,406,793,410,776,455,608,453" style="outline:none;" target="_self"     />
+                        <area  alt="" title="VIPA" href="http://vipa.lt/" shape="poly" coords="6,117,192,122,198,170,14,175" style="outline:none;" target="_self"     />
+                        <area  alt="" title="REGEA" href="http://www.regea.org/en/home.html" shape="poly" coords="366,399,580,407,563,451,353,453" style="outline:none;" target="_self"     />
+                        <area shape="rect" coords="798,459,800,461" alt="Image Map" style="outline:none;" title="Image Map" href="http://www.image-maps.com/index.php?aff=mapped_users_73315" />
+                    </map>
 
-    <section id="contact">
+                </div>
+            </div>
+		</div>
+		</section>
+    <!--section id="contact">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 text-center">
@@ -172,21 +233,28 @@
                 </div>
             </div>
 		</div>
-		</section>
+		</section-->
 	<section class="bg-footer" style="padding:20px !important;">
         <div class="container">
 			<div class="row text-center">
 			                <div class="text-center">
                     <hr class="primary">
-                    <p>You may also contact</p>
+                    <p>{% trans 'You may contact us' %}</p>
                 </div>
-			<p><b>European Commission, DG Energy:</b></br> <b>Roman Doubrava</b>, Team Leader - Energy Efficiency Finance, <a href="mailto:roman.doubrava@ec.europa.eu">roman.doubrava@ec.europa.eu</a>
+			<p><b>{% trans 'European Commission, DG Energy:' %}</b></br>
+                <b>Diana Barglazan</b>, <a href="mailto:diana.barglazan@ec.europa.eu">diana.barglazan@ec.europa.eu</a></br>
+                <b>Timothee Noel</b>, <a href="mailto:timothee.noel@ec.europa.eu">timothee.noel@ec.europa.eu</a></br>
+                <b>Paula Rey Garcia</b>, <a href="mailto:paula.rey-garcia@ec.europa.eu">paula.rey-garcia@ec.europa.eu</a></br>
+			</p>
+             <p><b>UNEP FI:</b></br>
+                <b>Martin Schoenberg</b>, <a href="mailto:Martin.Schoenberg.affiliate@unep.org">Martin.Schoenberg.affiliate@unep.org</a></br>
 			</p>
            <p>
-<b>The consultant team supporting the EEFIG De-risking project</b> </br>
- <b>Peter Sweatman</b>, EEFIG Rapporteur, <a href="mailto:info@climatestrategy.com">info@climatestrategy.com</a></br>
- <b>Steven Fawkes</b>, Project Manager, <a href="mailto:steven.fawkes@energyproltd.com">steven.fawkes@energyproltd.com</a></br>
- <b>Carsten Glenting</b>, Deputy Project Manager, <a href="mailto:cag@cowi.com">cag@cowi.com</a>
+<b>{% trans 'The consultant team supporting the EEFIG De-risking project' %}</b> </br>
+ <b>Peter Sweatman</b>, <a href="mailto:info@climatestrategy.com">info@climatestrategy.com</a></br>
+ <b>Steven Fawkes</b>, <a href="mailto:steven.fawkes@energyproltd.com">steven.fawkes@energyproltd.com</a></br>
+ <b>Dinne Smederup Hansen</b>, <a href="mailto:dsh@cowi.com">dsh@cowi.com</a></br>
+ <b>Ivo Georgiev</b>, <a href="mailto: ivgg@cowi.com"> ivgg@cowi.com</a></br>
  </p>
 			</div>
         </div>
@@ -205,7 +273,16 @@
 
     <!-- Custom Theme JavaScript -->
     <script src="/static/homepage/js/creative.js"></script>
+        <script>
+          (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+          })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
+          ga('create', 'UA-87688222-1', 'auto');
+          ga('send', 'pageview');
+
+        </script>
 </body>
 
 </html>

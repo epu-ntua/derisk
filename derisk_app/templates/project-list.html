@@ -1,19 +1,50 @@
 {% extends "base.html" %}
+{% load i18n %}
 {% load humanize %}
-{% block title %}Energy Efficiency De-risking Platform - Overview{% endblock %}
+{% load el_pagination_tags %}
+{% load has_group %}
+{% block title %}De-risking Energy Efficiency Platform - Overview{% endblock %}
 {% block bodyclass %}Manage Projects{% endblock %}
 {% block manageprojectsmenu %}active{% endblock %}
+{% block css %}
+    <link href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css" rel="stylesheet"/>
+    <link href="https://cdn.datatables.net/select/1.2.0/css/select.dataTables.min.css" rel="stylesheet"/>
+{% endblock %}
+{% block scripts %}
+    <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js" type="text/javascript"></script>
+     <script src="https://cdn.datatables.net/select/1.2.0/js/dataTables.select.min.js" type="text/javascript"></script>
+    <script src="/static/js/derisk/projectlist.js" type="text/javascript"></script>
+	    <!-- Delete project Notification Box -->
+    <div id="deleteproject">
+        <div class="logout-message">
+            <h3 style="padding-top:50px">
+                <i class="fa fa-remove text-red"></i> {%  trans 'Are you sure you want to delete all your private projects?' %}
+            </h3>
+            <p>{%  trans ' All information about the projects<br> will be deleted. You cannot undo this action' %}</p>
+            <ul class="list-inline">
+                <li>
+                    <form method="post" action="{% url 'project-delete-portfolio'%}">
+                        {% csrf_token %}
+                        <button class="btn btn-red" type="submit"><strong>{%  trans 'Delete' %}</strong></button>
+                    </form>
+                </li>
+                <li>
+                    <button class="deleteproject_close btn btn-logo-blue">{%  trans 'Cancel' %}</button>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!-- /#deleteproject -->
+	    <script src="/static/js/plugins/popupoverlay/deleteproject.js"></script>
+{% endblock %}
 {% block content %}
                 <!-- begin PAGE TITLE AREA -->
                 <!-- Use this section for each page's title and breadcrumb layout. In this example a date range picker is included within the breadcrumb. -->
                 <div class="row">
                     <div class="col-lg-12">
-                        <div class="page-title">
-                            <h1>Manage Projects<small> List of your energy investment projects</small>
+                        <div class="page-title underline-title">
+                            <h1>{% trans 'Add and Manage Projects' %}<small> {% trans 'List of your energy investment projects' %}</small>
                             </h1>
-                            <ol class="breadcrumb">
-                                <li class="active"><i class="fa fa-building-o"></i> Manage Projects</li>
-                            </ol>
                         </div>
                     </div>
                     <!-- /.col-lg-12 -->
@@ -21,26 +52,53 @@
                 <!-- /.row -->
                 <!-- end PAGE TITLE AREA -->
 
-               <div class="row">
-			      <div class="col-lg-8 col-sm-8">
-				 <div>
-				</div>
-				  <div class="row">
-                    <div class="col-lg-8 col-sm-8">
-					 <div class="portlet portlet-default">
-					 <div class="portlet-body">
-					 <div style="text-align:left"><h3 style="color:#34495e;margin-bottom:25px;">Your Projects</h3>
-					 </div>
-					 {% for project in projects %}
-					 <p> <a class="projectlinks" href="{% url 'project-edit' project.id %}"><b>Project ID -  {{project.id}}</b><span style="font-style:italic;"> updated {{project.date_updated|naturaltime}}</span> <span style=""> <b>{{project.get_sharing_level_display}} {% if project.sharing_level == "PRI" %}<i class="fa fa-lock"></i> {% else %}<i class="fa fa-unlock"></i> {% endif %}</b> </span></a></p>
-					 {% endfor %}
-				<form method="post" action="{% url 'project-create'%}">
-				  {% csrf_token %}
-				  <button class="btn btn-default" style="margin-top:40px" type="submit"><strong><i class="fa fa-plus"> Add New Project</i></strong></button>
-				</form>
-					 </div>
-					 </div>
+                  <div class="row">
+                  <table id="selectProjectsDataTable"  class="display" cellspacing="0" width="100%">
+                       <thead>
+                        <tr>
+                            <th>{% trans 'ID' %}</th>
+                            <th>{% trans 'Title' %}</th>
+                            <th>{% trans 'User-defined tags' %}</th>
+                            <th>{% trans 'Type' %}</th>
+                            <th>{% trans 'Country' %}</th>
+                            <th>{% trans 'Last updated' %}</th>
+                            <th>{% trans 'Sharing level' %}</th>
+                        </tr>
+                        </thead>
+                      </table>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                    <div class="col-lg-12 col-sm-12">
+
+                    <div class="form-footer">
+				<form class="inline" method="post" action="{% url 'project-create'%}">
+				    {% csrf_token %}
+				        <button class="btn btn-logo-blue" type="submit"><i class="fa fa-plus"></i> {% trans 'Add New Project' %}</button>
+                 </form>
+                    <a href="/projects/upload-from-excel/" class="btn btn-logo-blue"><i class="fa fa-file-excel-o"></i> {% trans 'Import from Excel' %}</a>
+                    <a href="/projects/upload-for-verification/" class="btn btn-logo-blue"><i class="fa fa-file-excel-o"></i> {% trans 'Upload Data for Verification' %}</a>
+                        {% if request.user|has_group:"verified_data_providers" %}
+                            <form class="inline" method="post" action="{% url 'project-unlock-all'%}">
+                            {% csrf_token %}
+                             <button class="btn btn-logo-blue"><i class="fa fa-unlock"></i> {% trans 'Make all projects public' %}</button>
+                           </form>
+                            <form class="inline" method="post" action="{% url 'project-lock-all'%}">
+                            {% csrf_token %}
+                            <button class="btn btn-logo-blue"><i class="fa fa-lock"></i> {% trans 'Make all projects private' %}</button>
+                            </form>
+                        {% endif %}
+										<form class="inline" method="post" action="{% url 'project-delete-portfolio'%}">
+				    {% csrf_token %}
+					 <a class="btn btn-logo-blue deleteproject_open" href="#deleteproject">
+                                    <i class="fa fa-trash-o"></i>{%  trans ' Delete all private project' %}
+                                </a>
+
+                 </form>
+                    </div>
                     </div>
                  </div>
                  <!-- end of row -->
 {% endblock %}
+

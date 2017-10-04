@@ -4,6 +4,20 @@
  * For details, see http://www.apache.org/licenses/LICENSE-2.0.
  */
 
+#languagepickerfront{
+    margin-top:25px;
+        color: #BFC6CC;
+    background-color:transparent;
+    border:none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    text-indent: 1px;
+    text-overflow: '';
+    text-transform: uppercase;
+    font-size:13px;
+    font-weight:bold;
+}
+
 html,
 body {
     width: 100%;
@@ -197,7 +211,8 @@ header .header-content .header-content-inner h1 {
     margin-bottom: 0;
     text-transform: uppercase;
     font-weight: 700;
-	font-size:55px !important;
+	font-size:45px !important;
+    font-family: 'Lato','Helvetica Neue',Arial,sans-serif;
 }
 
 header .header-content .header-content-inner hr {

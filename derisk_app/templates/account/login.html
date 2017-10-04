@@ -14,8 +14,8 @@
 
     <!-- GLOBAL STYLES -->
     <link href="/static/css/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href='http://fonts.googleapis.com/css?family=Ubuntu:300,400,500,700,300italic,400italic,500italic,700italic' rel="stylesheet" type="text/css">
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Ubuntu:300,400,500,700,300italic,400italic,500italic,700italic' rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel="stylesheet" type="text/css">
     <link href="/static/icons/font-awesome/css/font-awesome.min.css" rel="stylesheet">
 
     <!-- PAGE LEVEL PLUGIN STYLES -->
@@ -25,13 +25,14 @@
     <link href="/static/css/plugins.css" rel="stylesheet">
 
     <!-- THEME DEMO STYLES -->
-    <link href="/static/css/demo.css" rel="stylesheet">
+    <link href="/static/css/derisk.css" rel="stylesheet">
 
     <!--[if lt IE 9]>
     <script src="js/html5shiv.js"></script>
     <script src="js/respond.min.js"></script>
     <![endif]-->
 
+    <link rel="shortcut icon" href="/static/favicon.ico"/>
 </head>
 
 <body class="login">
@@ -55,7 +56,7 @@
                             </h4>
                         </div>
                         <div class="portlet-widgets">
-                            <button class="btn btn-white btn-xs"><i class="fa fa-plus-circle"></i> <a style="color:black" href="{{ signup_url }}">{% trans "New User" %}</a></button>
+                            <a class="btn btn-white" style="color:black" href="{{ signup_url }}"><i class="fa fa-plus-circle"></i>&nbsp{% trans "New User" %}</a>
                         </div>
                         <div class="clearfix"></div>
                     </div>
@@ -63,10 +64,10 @@
                         <form accept-charset="UTF-8" role="form">
                             <fieldset>
                                 <div class="form-group">
-                                    <input id="user_login"  class="form-control" placeholder="E-mail" name="login" type="text" required="true">
+                                    <input id="user_login"  class="form-control" placeholder="{% trans 'E-mail' %}" name="login" type="text" required="true">
                                 </div>
                                 <div class="form-group">
-                                    <input id="user_password" class="form-control" placeholder="Password" name="password" type="password" required="true" value="">
+                                    <input id="user_password" class="form-control" placeholder="{% trans 'Password' %}" name="password" type="password" required="true" value="">
                                 </div>
                                 <div class="checkbox">
                                     <label>
@@ -76,9 +77,12 @@
                                 <br>
 								<div class="error">{{ form.non_field_errors }}</div>
 								<div class="error">{{form.login.errors}}</div>
-                                <button type="submit" class="btn btn-lg btn-green btn-block">{% trans "Sign In" %}</button>
+                                <button type="submit" class="btn btn-lg btn-logo-blue btn-block">{% trans "Sign In" %}</button>
                             </fieldset>
                             <br>
+                            <p class="small">
+                                {% trans 'By signing in you agree to the DEEP platform ' %}<a style="text-decoration:underline;" href="/static/pdf/DatabaseTermsofUse.pdf">{%  trans 'terms of usage' %}.</a>
+                            </p>
                             <p class="small">
                                 <a href="{% url 'account_reset_password' %}">{% trans "Forgot your password?" %}</a>
                             </p>
@@ -90,7 +94,7 @@
     </div>
 </form>
     <!-- GLOBAL SCRIPTS -->
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <script src="/static/js/plugins/bootstrap/bootstrap.min.js"></script>
     <script src="/static/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
     <!-- HISRC Retina Images -->

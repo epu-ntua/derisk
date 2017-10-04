@@ -60,7 +60,34 @@ function syncronizeSimpleWithAdvanced()
 		});
 }
 
-
+function submitSharingLevel() {
+	if (true) { //Essential fields here
+		var csrftoken = Cookies.get('csrftoken');
+		function csrfSafeMethod(method) {
+		// these HTTP methods do not require CSRF protection
+			return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+		}
+		$.ajaxSetup({
+			beforeSend: function(xhr, settings) {
+				if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+					xhr.setRequestHeader("X-CSRFToken", csrftoken);
+				}
+			}
+		});
+		$.ajax({
+		url:'/projects/setaccesslevel/',
+		type: "POST",
+		data: {projectid: $('#ProjectID').text(), sharinglevel: $('select#sharinglevel').val()},
+		success:function(response){},
+		complete:function(){},
+		error:function (xhr, textStatus, thrownError){}
+		});
+	}
+	else
+	{
+		alert("You need to fill in the following essential fields:");
+	}
+}
 function initDropDownListswithOther(){
 	//Select other option Simple Tab
 	//Initializations
@@ -96,39 +123,44 @@ function initDropDownListswithOther(){
 	});
 };
 $(document).ready(function () {
-	$('[data-toggle="tooltip"]').tooltip();
-	$('form input, form textarea').addClass('form-control');
-	$('form select').select2({width: '100%'});
-	$('#pillSimple #id_dateinvestmentbecameoperational_29').datepicker({autoclose: true, viewMode: "months",minViewMode: "months",format:"mm/yyyy",todayHighlight: true});
-    $('#pillAdvanced #id_dateinvestmentbecameoperational_29').datepicker({autoclose: true, viewMode: "months",minViewMode: "months",format:"mm/yyyy",todayHighlight: true});
-$('#pillAdvanced #id_projectstartdate_28').datepicker({autoclose: true, viewMode: "months",minViewMode: "months",format:"mm/yyyy",todayHighlight: true});
-	$('#jstree_measures_div').jstree({
-		'checkbox': {
-        three_state: false,
-        cascade: 'up'
-        },
-		'plugins': ["checkbox"]
-		});
-    initializeTreeSimple();
-	syncronizeSimpleWithAdvanced();
-	$("#pillSimple #id_measures_18").on('select2:select, select2:unselect', function() {
-		initializeTreeSimple();
-	});
-	$("#pillAdvanced #id_measures_18").on('select2:select select2:unselect', function() {
-		initializeTreeAdvanced();
-	});
-	
-    //Initialize Dropdownlists with other
-	initDropDownListswithOther();
-	//Select measure tree pop up form
-    $('#flexModal').on('hidden.bs.modal', function () {
-		checked_ids =[];
-		for (let treeSelectedMeasure of $("#jstree_measures_div").jstree('get_checked',null,true)){
-		   checked_ids.push($("#pillSimple #id_measures_18 > [data-tree-code='" + treeSelectedMeasure + "']").val());
-		   checked_ids.push($("#pillAdvanced #id_measures_18 > [data-tree-code='" + treeSelectedMeasure + "']").val());
-		};
+	 $('[data-toggle="tooltip"]').tooltip({html: true});
+	 $('form input, form textarea').addClass('form-control');
+	 $('form select').select2({width: '100%'});
+	 $('select#sharinglevel').select2({width: '50%'});
+	 $('#pillSimple #id_dateinvestmentbecameoperational_29').datepicker({autoclose: true, viewMode: "months",minViewMode: "months",format:"mm/yyyy",todayHighlight: true});
+     $('#pillAdvanced #id_dateinvestmentbecameoperational_29').datepicker({autoclose: true, viewMode: "months",minViewMode: "months",format:"mm/yyyy",todayHighlight: true});
+	 $('#pillAdvanced #id_projectstartdate_28').datepicker({autoclose: true, viewMode: "months",minViewMode: "months",format:"mm/yyyy",todayHighlight: true});
+	 $('#jstree_measures_div').jstree({
+	 	'checkbox': {
+         three_state: false,
+         cascade: 'up'
+         },
+	 	'plugins': ["checkbox"]
+	 	});
+       initializeTreeSimple();
+	   syncronizeSimpleWithAdvanced();
+	 $("#pillSimple #id_measures_18").on('select2:select, select2:unselect', function() {
+	 	initializeTreeSimple();
+	 });
+	 $("#pillAdvanced #id_measures_18").on('select2:select select2:unselect', function() {
+	 	initializeTreeAdvanced();
+	 });
+	 $("select#sharinglevel").on('change', function() {
+	 	submitSharingLevel();
+	 });
+     //Initialize Dropdownlists with other
+	 initDropDownListswithOther();
+	 //Select measure tree pop up form
+     $('#flexModal').on('hidden.bs.modal', function () {
+	 	checked_ids =[];
+		 arrSelectedMeasures = $("#jstree_measures_div").jstree('get_checked',null,true);
+		 console.log(arrSelectedMeasures);
+		 for(i=0;i < arrSelectedMeasures.length;i++){
+			 checked_ids.push($("#pillSimple #id_measures_18 > [data-tree-code='" + arrSelectedMeasures[i] + "']").val());
+			 checked_ids.push($("#pillAdvanced #id_measures_18 > [data-tree-code='" + arrSelectedMeasures[i] + "']").val());
+		 }
 		$("#pillSimple #id_measures_18").val(checked_ids).trigger("change");
 		$("#pillAdvanced #id_measures_18").val(checked_ids).trigger("change");
-	});
+	 });
 
 });

@@ -539,7 +539,7 @@ margin-bottom:20px;
 .navbar-side .side-user .name {
     margin: 0;
     font-family: "Ubuntu","Helvetica Neue",Helvetica,Arial,sans-serif;
-    font-size: 20px;
+    font-size: 18px;
     font-weight: 300;
     color: #ccd1d7;
 }
@@ -825,12 +825,12 @@ margin-bottom:20px;
 
 .portlet-green,
 .portlet-green>.portlet-heading {
-    border-color: #16a085;
+    border-color: #619fd0;
 }
 
 .portlet-green>.portlet-heading {
     color: #fff;
-    background-color: #16a085;
+    background-color: #619fd0;
 }
 
 .portlet-orange,
@@ -1780,7 +1780,7 @@ color:red;
         display: inherit;
         font-size: 12px;
         font-style: italic;
-        line-height: 20px;
+        line-height: 22px;
     }
 }
 
